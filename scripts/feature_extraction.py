@@ -1,15 +1,41 @@
 import requests
 import whois
 import re
+import os
 from urllib.parse import urlparse
 import logging
-from datetime import datetime
+import pickle
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Cache file for storing extracted features
+# This file will be created in the 'model' directory
+CACHE_FILE = 'model/feature_cache.pkl'
+cache={}
+
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, 'rb') as f:
+            return pickle.load(f)
+    return {}
+
+def save_cache():
+    if os.path.exists(CACHE_FILE):
+        os.remove(CACHE_FILE)
+    with open(CACHE_FILE, 'wb') as f:
+        pickle.dump(cache, f)
+
 def extract_features(url):
     """Extract features from a URL."""
+    global cache
+    if not cache:
+        cache = load_cache()
+        
+    if url in cache:
+        logger.info(f"Using cached features for {url}")
+        return cache[url]
+    
     try:
         parsed_url = urlparse(url)
         features = {
@@ -54,7 +80,9 @@ def extract_features(url):
             features['meta_refresh'] = 1 if '<meta http-equiv="refresh"' in content else 0
         except Exception:
             pass
-
+        
+        cache[url] = features
+        save_cache(cache)
         return features
     except Exception as e:
         logger.warning(f"Feature extraction failed for {url}: {str(e)}")
