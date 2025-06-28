@@ -113,7 +113,7 @@ def train_model():
     filtered_data = data[data['url'].isin(successful_urls)]
     y = filtered_data['label']
 
-    # Log lengths for debugging
+    # Log lengths => intended for debugging
     print(f"X length: {len(X)}, y length: {len(y)}, filtered_data length: {len(filtered_data)}")
     
     if len(X) != len(y):

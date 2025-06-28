@@ -182,5 +182,3 @@ Apache 2.0 License. See [LICENSE](LICENSE) for details.
 This tool is for educational and research purposes only. It is not foolproof and should not be the sole method for ensuring online safety. Verify URLs through trusted sources.
 
 This tool is currently under development and may not work as intended.
-
-Thank you for using Phishing Web Detector! Stay safe online.
