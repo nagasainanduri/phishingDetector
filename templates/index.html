@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phishing Web Detector</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border: 1px solid #2e2e2e;
+    }
+
+    .phishing {
+      background-color: #2e0000;
+      color: #ff5a5a;
+      border-left: 4px solid #ff5a5a;
+    }
+
+    .legitimate {
+      background-color: #002e00;
+      color: #5aff5a;
+      border-left: 4px solid #5aff5a;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .glow {
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+
+    input, button {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-xl card rounded-xl p-8 glow">
+    <h1 class="text-3xl font-semibold text-center mb-4">🔍 Phishing Web Detector</h1>
+    <p class="text-center text-gray-400 mb-6">Enter a URL to check if it's safe or malicious.</p>
+
+    <form id="url-form" class="space-y-4">
+      <input
+        type="text"
+        id="url-input"
+        placeholder="Enter URL (e.g., http://example.com)"
+        required
+        class="w-full p-3 rounded-md bg-black text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-white"
+      />
+      <button
+        type="submit"
+        class="w-full bg-white text-black font-semibold py-2 rounded-md hover:bg-gray-300 transition"
+      >
+        Analyze URL
+      </button>
+    </form>
+
+    <div id="result" class="mt-6 hidden p-4 rounded-md animate-fadeIn"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('url-form');
+    const input = document.getElementById('url-input');
+    const resultBox = document.getElementById('result');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = input.value.trim();
+
+      resultBox.className = 'mt-6 p-4 rounded-md animate-fadeIn';
+      resultBox.innerHTML = '⏳ Analyzing...';
+      resultBox.classList.remove('hidden');
+
+      try {
+        const response = await fetch('/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await response.json();
+        if (data.status === 'phishing') {
+          resultBox.classList.add('phishing');
+          resultBox.textContent = '⚠️ This site appears to be **Phishing**.';
+        } else if (data.status === 'legitimate') {
+          resultBox.classList.add('legitimate');
+          resultBox.textContent = '✅ This site appears to be **Legitimate**.';
+        } else {
+          resultBox.textContent = '❓ Unable to determine the status of this URL.';
+        }
+      } catch (error) {
+        resultBox.classList.remove('phishing', 'legitimate');
+        resultBox.textContent = '❌ Error analyzing the URL. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

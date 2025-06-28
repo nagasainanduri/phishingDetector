@@ -1,0 +1,25 @@
+2025-06-28 14:12:59,928 - ERROR - data/phishing_dataset.csv not found.
+2025-06-28 14:14:02,740 - INFO - Loaded data/kaggle_phishing.csv with 549346 rows
+2025-06-28 14:14:02,848 - INFO - After dropping null URLs, 549346 rows remain
+2025-06-28 14:14:03,246 - INFO - Logged 549239 invalid URLs to logs/invalid_urls_preprocess.log
+2025-06-28 14:14:03,324 - INFO - After URL validation, 107 rows remain
+2025-06-28 14:14:03,325 - INFO - After deduplication, 107 rows remain
+2025-06-28 14:14:03,326 - INFO - Saved processed data to data/processed_data.csv
+2025-06-28 14:15:17,365 - INFO - Loaded data/kaggle_phishing.csv with 549346 rows
+2025-06-28 14:15:17,483 - INFO - After dropping null URLs, 549346 rows remain
+2025-06-28 14:15:17,896 - INFO - Logged 549239 invalid URLs to logs/invalid_urls_preprocess.log
+2025-06-28 14:15:17,979 - INFO - After URL validation, 107 rows remain
+2025-06-28 14:15:17,980 - INFO - After deduplication, 107 rows remain
+2025-06-28 14:15:17,981 - INFO - Saved processed data to data/processed_data.csv
+2025-06-28 14:17:32,279 - INFO - Loaded data/kaggle_phishing.csv with 549346 rows
+2025-06-28 14:17:32,424 - INFO - After dropping null URLs, 549346 rows remain
+2025-06-28 14:17:35,219 - INFO - Logged 24 invalid URLs to logs/invalid_urls_preprocess.log
+2025-06-28 14:17:37,811 - INFO - After URL validation, 549322 rows remain
+2025-06-28 14:17:38,033 - INFO - After deduplication, 507171 rows remain
+2025-06-28 14:17:38,760 - INFO - Saved processed data to data/processed_data.csv
+2025-06-28 14:20:54,789 - INFO - Loaded data/kaggle_phishing.csv with 549346 rows
+2025-06-28 14:20:54,916 - INFO - After dropping null URLs, 549346 rows remain
+2025-06-28 14:20:56,882 - INFO - Logged 24 invalid URLs to logs/invalid_urls_preprocess.log
+2025-06-28 14:20:58,652 - INFO - After URL validation, 549322 rows remain
+2025-06-28 14:20:58,830 - INFO - After deduplication, 507171 rows remain
+2025-06-28 14:20:59,279 - INFO - Saved processed data to data/processed_data.csv

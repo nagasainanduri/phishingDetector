@@ -1,0 +1,1 @@
+# Run scripts/train_model.py to generate the original "phishing_detector.pkl" file

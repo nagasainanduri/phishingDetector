@@ -1,0 +1,12 @@
+flask>=2.3.3
+scikit-learn>=1.5.0
+pandas>=2.2.0
+numpy>=1.26.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+tldextract>=5.1.0
+python-whois>=0.8.0
+tqdm>=4.66.1
+timeout-decorator==0.5.0
+cachetools==5.3.3
+Flask-Limiter==3.5.1
