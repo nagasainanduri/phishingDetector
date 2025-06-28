@@ -1,22 +1,22 @@
 import pandas as pd
 import os
 import time
-from urllib.parse import urljoin
 
-def reconstruct_url(row):
-    """Reconstruct URL from dataset3.csv."""
-    protocol = row['protocol'].strip() if pd.notna(row['protocol']) else 'http'
-    domain = row['domain_name'].strip() if pd.notna(row['domain_name']) else ''
-    address = row['address'].strip() if pd.notna(row['address']) else ''
-    base_url = f"{protocol}://{domain}" if domain else ''
-    full_url = urljoin(base_url, address) if base_url and address else base_url
-    return full_url if full_url else None
+def reconstruct_url(df):
+    """Vectorized URL reconstruction."""
+    protocol = df['protocol'].fillna('http').str.strip()
+    domain = df['domain_name'].fillna('').str.strip()
+    address = df['address'].fillna('').str.strip()
+    base_url = protocol + '://' + domain
+    full_url = base_url + '/' + address
+    full_url = full_url.replace('//', '/').replace(':/', '://')  # To clean up the URL
+    return full_url.where(full_url != 'http://', None)
 
 def preprocess_dataset3(input_csv):
     """Process dataset3.csv into url and label."""
     try:
         df = pd.read_csv(input_csv)
-        df['url'] = df.apply(reconstruct_url, axis=1)
+        df['url'] = reconstruct_url(df)
         df['label'] = df['is_phished'].map({'yes': 1, 'no': 0})
         return df[['url', 'label']].dropna()
     except Exception as e:
@@ -36,7 +36,7 @@ def preprocess_kaggle(input_csv):
             return pd.DataFrame(columns=['url', 'label'])
         
         df = df.rename(columns={url_col: 'url', label_col: 'label'})
-        # Handle common label variations
+        # To Handle common label variations
         original_len = len(df)
         df['label'] = df['label'].map({
             'Good': 0, 'good': 0, 'Legitimate': 0, 'legitimate': 0, 0: 0, '0': 0,
