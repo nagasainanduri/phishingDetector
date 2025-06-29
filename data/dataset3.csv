@@ -1,4 +1,4 @@
-,protocol,domain_name,address,is_phished,long_url,having_@_symbol,redirection_//_symbol,prefix_suffix_seperation,sub_domains
+,protocol,domain_name,url,is_phished,long_url,having_@_symbol,redirection_//_symbol,prefix_suffix_seperation,sub_domains
 0,https,locking-app-adverds.000webhostapp.com,payment-update-0.html?fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=login_failed,yes,1,0,0,1,0
 1,https,mxtoolbox.com,public/upgradev2.aspx?ps=03eaebd0-170a-4142-a7e3-6bf26229494f&abt_id=ab-217b&abt_var=control&bh=bh-1&s0=bldc&s1=mdc-2&s2=mfm-2&utm_expid=.40ubxpatqrknvssdciofqg.1&utm_referrer=https%3a%2f%2fmxtoolbox.com%2fsupertool.aspx%3faction%3dblacklist%253aprodact.io%26run%3dtoolpage,no,1,0,0,0,0
 2,http,parolishop.com.br,questionreviews.htm,yes,0,0,0,0,0

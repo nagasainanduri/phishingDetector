@@ -178,7 +178,7 @@ def process_csv_files(dataset3_csv='data/dataset3.csv', alexa_csv='data/alexa_to
     
     phishing_count = len(final_df[final_df['label'] == 1])
     legit_count = len(final_df[final_df['label'] == 0])
-    target_count = min(phishing_count, legit_count, 25000)#limit to each kind of data => phishing and legit to 25000 each
+    target_count = min(phishing_count, legit_count, 18000)#limit to each kind of data => phishing and legit to 25000 each
     phishing = final_df[final_df['label'] == 1].sample(n=target_count, random_state=42)
     legit = final_df[final_df['label'] == 0].sample(n=target_count, random_state=42)
     final_df = pd.concat([phishing, legit], ignore_index=True)
