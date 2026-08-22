@@ -12,8 +12,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.storage.sync.get({
             backend_url: CONFIG.BACKEND_URL,
             privacy_mode: 'local_only',
-            telemetry: false
+            telemetry: false,
+            active_scanning: false
         }, (settings) => {
+            // Enforce privacy settings before making API call
+            if (!settings.active_scanning) {
+                return;
+            }
+
             const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/v1/analyze`;
             const headers = { 'Content-Type': 'application/json' };
             

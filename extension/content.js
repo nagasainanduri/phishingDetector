@@ -21,22 +21,25 @@ window.addEventListener('load', () => {
         return;
     }
 
-    // Check privacy settings before auto-scanning
-    chrome.storage.sync.get({
-        active_scanning: false // DEFAULT TO FALSE FOR PRIVACY
-    }, (items) => {
-        if (!items.active_scanning) {
-            console.log("PhishGuard: Active scanning disabled by privacy settings.");
-            return;
-        }
+    // Check if extension context is valid
+    if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.sendMessage) {
+        return;
+    }
 
+    try {
         const signals = extractStructuralSignals();
         chrome.runtime.sendMessage({
             action: "active_scan",
             url: window.location.href,
             dom_signals: signals
+        }, () => {
+            if (chrome.runtime.lastError) {
+                // Ignore "Extension context invalidated" or messaging errors quietly
+            }
         });
-    });
+    } catch(e) {
+        // Ignore extension context errors
+    }
 });
 
 function extractStructuralSignals() {
