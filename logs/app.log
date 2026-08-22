@@ -192,3 +192,19 @@
 2026-08-22 16:29:17,317 - INFO - Initialized SHAP TreeExplainer.
 2026-08-22 16:29:17,325 - WARNING -  * Debugger is active!
 2026-08-22 16:29:17,328 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 16:53:08,152 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 16:53:08,170 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 16:53:08,171 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 16:53:08,172 - INFO -  * Restarting with stat
+2026-08-22 16:53:10,661 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 16:53:10,668 - WARNING -  * Debugger is active!
+2026-08-22 16:53:10,672 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 16:53:21,443 - INFO - 127.0.0.1 - - [22/Aug/2026 16:53:21] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 16:53:23,913 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 16:53:23,913 - INFO - 127.0.0.1 - - [22/Aug/2026 16:53:23] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 16:54:11,651 - INFO - 127.0.0.1 - - [22/Aug/2026 16:54:11] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 16:55:00,162 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 16:55:00,163 - INFO - 127.0.0.1 - - [22/Aug/2026 16:55:00] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 16:56:46,757 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 16:56:46,758 - INFO - 127.0.0.1 - - [22/Aug/2026 16:56:46] "POST /api/v1/analyze HTTP/1.1" 200 -
