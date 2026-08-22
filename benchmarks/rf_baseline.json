@@ -1,0 +1,32 @@
+{
+    "timestamp": "2026-08-22T11:13:49.221795",
+    "model": "RandomForest Baseline",
+    "split": {
+        "strategy": "Domain-Aware GroupShuffleSplit",
+        "train_size": 28958,
+        "test_size": 7042
+    },
+    "metrics": {
+        "training_resources": {
+            "time_seconds": 1.1737658977508545,
+            "peak_memory_mb": 31.167283058166504,
+            "process_memory_mb": 309.04296875
+        },
+        "inference_resources": {
+            "time_seconds": 0.07302594184875488,
+            "peak_memory_mb": 3.224154472351074,
+            "process_memory_mb": 309.84375,
+            "latency_per_sample_ms": 0.010370057064577517
+        },
+        "evaluation": {
+            "accuracy": 0.9105367793240556,
+            "precision": 0.895505617977528,
+            "recall": 0.9251305861868834,
+            "f1": 0.9100770767913218,
+            "roc_auc": 0.9694039194900894,
+            "pr_auc": 0.9656846803126835,
+            "fpr": 0.10344827586206896,
+            "fnr": 0.07486941381311665
+        }
+    }
+}
