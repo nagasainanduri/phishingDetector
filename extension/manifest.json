@@ -3,6 +3,11 @@
   "name": "PhishGuard Detection Engine",
   "version": "1.0",
   "description": "Scan URLs using the PhishGuard Risk Engine.",
+  "icons": {
+    "16": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
   "permissions": [
     "activeTab",
     "storage"

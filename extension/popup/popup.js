@@ -53,12 +53,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             let domSignals = null;
             try {
                 const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-                const response = await chrome.tabs.sendMessage(tab.id, { action: "extract_dom_signals" });
-                if (response && response.dom_signals) {
-                    domSignals = response.dom_signals;
+                if (tab && tab.url && !tab.url.startsWith('chrome://') && !tab.url.startsWith('edge://') && !tab.url.startsWith('file://')) {
+                    const response = await chrome.tabs.sendMessage(tab.id, { action: "extract_dom_signals" });
+                    if (response && response.dom_signals) {
+                        domSignals = response.dom_signals;
+                    }
                 }
             } catch (err) {
-                console.warn("Could not get DOM signals from tab (content script might not be loaded on this page):", err);
+                console.info("DOM signals unavailable for this tab.");
             }
             chrome.storage.sync.get({
                 backend_url: 'http://127.0.0.1:5000',

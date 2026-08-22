@@ -144,14 +144,29 @@
             background-color: #cccccc;
         }
 
-        #status {
-            margin-top: 15px;
-            text-align: center;
-            font-weight: 700;
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 230, 118, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--success);
             color: var(--success);
+            padding: 15px 30px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 12px;
+            letter-spacing: 2px;
+            font-size: 14px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -200,7 +215,7 @@
     </div>
 
     <button id="save-btn">Save Settings</button>
-    <div id="status"></div>
+    <div id="toast" class="toast">Settings Successfully Saved</div>
 
     <script src="options.js"></script>
 </body>

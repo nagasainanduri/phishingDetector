@@ -19,13 +19,10 @@ function saveOptions() {
         active_scanning: activeScanning,
         telemetry: telemetry
     }, () => {
-        // Update status to let user know options were saved.
-        const status = document.getElementById('status');
-        status.textContent = 'Options saved.';
-        status.style.display = 'block';
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
         setTimeout(() => {
-            status.textContent = '';
-            status.style.display = 'none';
+            toast.classList.remove('show');
         }, 3000);
     });
 }
