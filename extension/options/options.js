@@ -20,10 +20,12 @@ function saveOptions() {
         telemetry: telemetry
     }, () => {
         // Update status to let user know options were saved.
-        const status = document.getElementById('status');
-        status.textContent = 'Settings saved.';
+        const status = document.getElementById('status-msg');
+        status.textContent = 'Options saved.';
+        status.style.display = 'block';
         setTimeout(() => {
             status.textContent = '';
+            status.style.display = 'none';
         }, 3000);
     });
 }

@@ -116,10 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
-            const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/feedback`;
+            const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/v1/feedback`;
+            const headers = { 'Content-Type': 'application/json' };
+            
             fetch(apiUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: headers,
                 body: JSON.stringify({
                     url: targetUrl,
                     feedback_type: feedbackType,

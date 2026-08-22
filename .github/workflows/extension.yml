@@ -1,0 +1,30 @@
+name: Extension Validation
+
+on:
+  push:
+    paths:
+      - 'extension/**'
+  pull_request:
+    paths:
+      - 'extension/**'
+
+jobs:
+  validate-extension:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Validate manifest.json format
+      run: |
+        if ! jq e . extension/manifest.json > /dev/null; then
+          echo "Error: manifest.json contains syntax errors"
+          exit 1
+        fi
+        echo "manifest.json syntax is valid."
+        
+    - name: Ensure popup and options scripts exist
+      run: |
+        test -f extension/popup/popup.js || (echo "popup.js missing" && exit 1)
+        test -f extension/options/options.js || (echo "options.js missing" && exit 1)
+        test -f extension/warning/warning.js || (echo "warning.js missing" && exit 1)
+        echo "Required extension scripts found."

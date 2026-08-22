@@ -1,3 +1,6 @@
 timestamp,url_identifier,feedback_type,risk_score,prediction
 2026-08-22T15:17:21.249426,https://www.mictech.edu.in/,false_positive,79,HIGH
 2026-08-22T15:19:00.234350,https://www.mictech.edu.in/,false_positive,79,HIGH
+2026-08-22T15:34:21.075549,http://trusted.com,false_positive,85,HIGH
+2026-08-22T15:34:44.558333,http://trusted.com,false_positive,85,HIGH
+2026-08-22T15:41:06.150185,http://trusted.com,false_positive,85,HIGH

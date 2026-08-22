@@ -12,13 +12,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             privacy_mode: 'local_only',
             telemetry: false
         }, (settings) => {
-            const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/predict`;
+            const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/v1/analyze`;
+            const headers = { 'Content-Type': 'application/json' };
             
             fetch(apiUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: headers,
                 body: JSON.stringify({
                     url: request.url,
                     page_signals: request.dom_signals,
