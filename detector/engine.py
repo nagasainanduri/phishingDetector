@@ -69,12 +69,14 @@ class PhishingDetector:
             # 3. Package Detection Result
             detection = DetectionResult(
                 url=url,
-                ml_probability=pred_res['raw_probability'],
+                ml_probability=pred_res['raw_probability'] if 'raw_probability' in pred_res else pred_res['confidence'],
                 ml_model_name=pred_res['model_name'],
                 is_calibrated_probability=pred_res['is_calibrated'],
                 heuristic_findings=heuristic_findings,
                 future_brand_findings=[brand_findings] if brand_findings else [],
-                future_threat_intel=threat_intel_findings
+                future_threat_intel=threat_intel_findings,
+                model_explanation=pred_res.get('model_explanation', []),
+                explanation_limitation=pred_res.get('explanation_limitation')
             )
             
             # 4. Evaluate Risk
@@ -83,6 +85,12 @@ class PhishingDetector:
             # 5. Evaluate Policy
             action = self.policy_engine.evaluate(risk, detection)
             
+            # Format model explanation for frontend if it exists
+            formatted_explanation = []
+            if detection.model_explanation:
+                for item in detection.model_explanation:
+                    formatted_explanation.append(f"{item['feature'].replace('_', ' ').title()} ({round(item['importance'] * 100)}% impact)")
+
             return {
                 'url': url,
                 'result': risk.severity.value, # Return severity string for compatibility or custom handling
@@ -90,7 +98,9 @@ class PhishingDetector:
                 'risk_score': risk.risk_score,
                 'severity': risk.severity.value,
                 'action': action.value,
-                'reasons': risk.evidence_summary
+                'reasons': risk.evidence_summary,
+                'model_explanation': formatted_explanation,
+                'explanation_limitation': detection.explanation_limitation
             }
 
         except Exception as e:

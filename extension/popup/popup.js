@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             scoreCircle.style.stroke = 'var(--text-secondary)';
         }
 
-        // Update Reasons
+        // Update Reasons (System Evidence)
         if (result.reasons && result.reasons.length > 0) {
             reasonsList.innerHTML = '';
             result.reasons.forEach(reason => {
@@ -125,6 +125,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                 reasonsList.appendChild(li);
             });
             reasonsContainer.classList.remove('hidden');
+        } else {
+            reasonsContainer.classList.add('hidden');
+        }
+        
+        // Update Model Explanation (XAI)
+        const expContainer = document.getElementById('model-explanation-container');
+        const expList = document.getElementById('explanation-list');
+        const expLimitation = document.getElementById('explanation-limitation');
+        
+        expList.innerHTML = '';
+        expLimitation.classList.add('hidden');
+        
+        if (result.explanation_limitation) {
+            expLimitation.textContent = result.explanation_limitation;
+            expLimitation.classList.remove('hidden');
+            expContainer.classList.remove('hidden');
+        } else if (result.model_explanation && result.model_explanation.length > 0) {
+            result.model_explanation.forEach(exp => {
+                const li = document.createElement('li');
+                li.textContent = exp;
+                expList.appendChild(li);
+            });
+            expContainer.classList.remove('hidden');
+        } else {
+            expContainer.classList.add('hidden');
         }
     }
 });

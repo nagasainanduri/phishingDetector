@@ -24,7 +24,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                         score: result.risk_score || 0,
                         sev: result.severity || 'UNKNOWN',
                         action: result.action,
-                        reasons: encodeURIComponent(JSON.stringify(result.reasons || []))
+                        reasons: encodeURIComponent(JSON.stringify(result.reasons || [])),
+                        model_explanation: encodeURIComponent(JSON.stringify(result.model_explanation || [])),
+                        explanation_limitation: result.explanation_limitation || "null"
                     });
                     
                     chrome.tabs.update(sender.tab.id, {

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const severity = params.get('sev') || 'UNKNOWN';
     const action = params.get('action') || 'BLOCK';
     const reasonsRaw = params.get('reasons');
+    const modelExpRaw = params.get('model_explanation');
+    const modelLimitation = params.get('explanation_limitation');
     
     // Update UI elements
     document.getElementById('url-display').textContent = targetUrl;
@@ -56,6 +58,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } catch (e) {
             console.error("Failed to parse reasons:", e);
+        }
+    }
+    
+    // Parse and display model explanations
+    const expContainer = document.getElementById('model-explanation-container');
+    const expList = document.getElementById('explanation-list');
+    const expLimitation = document.getElementById('explanation-limitation');
+    
+    if (modelLimitation && modelLimitation !== "null") {
+        expLimitation.textContent = modelLimitation;
+        expLimitation.classList.remove('hidden');
+        expContainer.classList.remove('hidden');
+    } else if (modelExpRaw) {
+        try {
+            const modelExp = JSON.parse(decodeURIComponent(modelExpRaw));
+            if (modelExp && modelExp.length > 0) {
+                modelExp.forEach(r => {
+                    const li = document.createElement('li');
+                    li.textContent = r;
+                    expList.appendChild(li);
+                });
+                expContainer.classList.remove('hidden');
+            }
+        } catch (e) {
+            console.error("Failed to parse model explanations:", e);
         }
     }
 

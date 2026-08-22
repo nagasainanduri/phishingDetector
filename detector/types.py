@@ -18,6 +18,8 @@ class DetectionResult:
     future_page_findings: List[Any] = field(default_factory=list)
     future_brand_findings: List[Any] = field(default_factory=list)
     future_threat_intel: List[Any] = field(default_factory=list)
+    model_explanation: List[Dict[str, float]] = field(default_factory=list)
+    explanation_limitation: Optional[str] = None
 
 @dataclass
 class RiskAssessment:

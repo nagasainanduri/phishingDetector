@@ -29,10 +29,16 @@
         <div class="severity-badge" id="severity-badge">UNKNOWN</div>
       </div>
       
-      <div id="reasons-container" class="reasons-container hidden">
-        <h3>Evidence Log</h3>
-        <ul id="reasons-list"></ul>
-      </div>
+            <div id="reasons-container" class="reasons-box hidden">
+                <h3>System Evidence</h3>
+                <ul id="reasons-list"></ul>
+            </div>
+            
+            <div id="model-explanation-container" class="reasons-box hidden" style="margin-top: 16px; background: rgba(211, 47, 47, 0.05);">
+                <h3>Model Explanation</h3>
+                <p id="explanation-limitation" class="hidden" style="font-size: 13px; font-style: italic;"></p>
+                <ul id="explanation-list"></ul>
+            </div>
 
       <div id="error-container" class="error-container hidden"></div>
       
