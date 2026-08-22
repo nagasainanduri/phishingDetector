@@ -12,3 +12,7 @@ timestamp,url,result,confidence
 2026-08-22T13:49:13.866298,https://github.com/Amevrynx/phishingDetector,LOW,0.6939
 2026-08-22T13:49:52.749276,https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983,LOW,0.8251999999999999
 2026-08-22T13:50:47.004425,https://minorcourse.mictech.edu.in/adminlogin.html,CRITICAL,0.9887999999999999
+2026-08-22T14:48:00.976524,https://github.com/Amevrynx/phishGuard,LOW,0.7256999999999999
+2026-08-22T14:48:26.124546,https://www.mictech.edu.in/,HIGH,0.6915
+2026-08-22T14:49:52.432991,https://www.mictech.edu.in/?phishguard_bypass=1,HIGH,0.6015999999999999
+2026-08-22T14:50:03.580013,https://www.mictech.edu.in/?phishguard_bypass=0,HIGH,0.6015999999999999

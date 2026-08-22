@@ -121,3 +121,25 @@
 2026-08-22 14:33:47,783 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:47] "POST /api/predict HTTP/1.1" 200 -
 2026-08-22 14:33:51,670 - ERROR - Error analyzing URL https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983: 'raw_probability'
 2026-08-22 14:33:51,671 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:51] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:47:25,804 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 14:47:25,818 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 14:47:25,818 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 14:47:25,820 - INFO -  * Restarting with stat
+2026-08-22 14:47:28,190 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 14:47:28,197 - WARNING -  * Debugger is active!
+2026-08-22 14:47:28,200 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 14:48:00,980 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 14:48:00,981 - INFO - 127.0.0.1 - - [22/Aug/2026 14:48:00] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:48:26,127 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 14:48:26,127 - INFO - 127.0.0.1 - - [22/Aug/2026 14:48:26] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:48:26,407 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 14:48:26,408 - INFO - 127.0.0.1 - - [22/Aug/2026 14:48:26] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:49:52,435 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 14:49:52,435 - INFO - 127.0.0.1 - - [22/Aug/2026 14:49:52] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:50:03,582 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 14:50:03,583 - INFO - 127.0.0.1 - - [22/Aug/2026 14:50:03] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:50:06,131 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 14:50:06,132 - INFO - 127.0.0.1 - - [22/Aug/2026 14:50:06] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:50:14,440 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 14:50:14,440 - INFO - 127.0.0.1 - - [22/Aug/2026 14:50:14] "POST /api/predict HTTP/1.1" 200 -

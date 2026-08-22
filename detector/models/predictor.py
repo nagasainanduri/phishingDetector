@@ -70,11 +70,14 @@ class PhishingPredictor:
                 try:
                     shap_values = self.explainer.shap_values(feature_df)
                     # For binary classification, shap_values[1] is the positive class (phishing)
-                    # In some older shap versions or specific models, it returns a single array
+                    # In some newer shap versions, it returns an array of shape (batch, features, classes)
                     if isinstance(shap_values, list):
                         pos_shap = shap_values[1][0]
                     else:
-                        pos_shap = shap_values[0]
+                        if len(shap_values.shape) == 3:
+                            pos_shap = shap_values[0][:, 1]
+                        else:
+                            pos_shap = shap_values[0]
                         
                     # Map to feature names
                     feature_names = feature_df.columns.tolist()
