@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         warningTitle.textContent = "Confirmed Deceptive Site Ahead";
     } else if (action === 'WARN') {
         warningTitle.textContent = "Suspected Deceptive Site Ahead";
-        document.body.style.backgroundColor = "#e67c73"; // slightly lighter orange/red for warning
     }
 
     // Parse and display reasons
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Button event listeners
     document.getElementById('btn-back').addEventListener('click', () => {
-        window.location.replace('chrome://newtab/');
+        window.location.replace('https://google.com');
     });
 
     document.getElementById('btn-continue').addEventListener('click', () => {
