@@ -5,6 +5,7 @@ from .models.predictor import PhishingPredictor
 from .heuristics import create_engine as create_heuristic_engine
 from .risk.engine import RiskEngine
 from .brand.detector import BrandDetector
+from .threat_intel.aggregator import ThreatIntelAggregator
 from .types import DetectionResult
 from urllib.parse import urlparse
 import re
@@ -24,6 +25,7 @@ class PhishingDetector:
         self.heuristic_engine = create_heuristic_engine()
         self.risk_engine = RiskEngine()
         self.brand_detector = BrandDetector()
+        self.threat_intel = ThreatIntelAggregator()
         
     def analyze(self, url: str, page_signals: dict = None) -> dict:
         """
@@ -50,11 +52,17 @@ class PhishingDetector:
                 
             pred_res = self.predictor.predict(url, features)
             
-            # 1. Run Brand Detection
+            # 1. External Checks
             brand_findings = self.brand_detector.analyze(url)
+            threat_intel_findings = self.threat_intel.analyze(url)
             
             # 2. Run Heuristics
-            heuristic_findings = self.heuristic_engine.evaluate(url, page_signals=page_signals, brand_findings=brand_findings)
+            heuristic_findings = self.heuristic_engine.evaluate(
+                url, 
+                page_signals=page_signals, 
+                brand_findings=brand_findings,
+                threat_intel_findings=threat_intel_findings
+            )
             
             # 3. Package Detection Result
             detection = DetectionResult(
@@ -63,7 +71,8 @@ class PhishingDetector:
                 ml_model_name=pred_res['model_name'],
                 is_calibrated_probability=pred_res['is_calibrated'],
                 heuristic_findings=heuristic_findings,
-                future_brand_findings=[brand_findings] if brand_findings else []
+                future_brand_findings=[brand_findings] if brand_findings else [],
+                future_threat_intel=threat_intel_findings
             )
             
             # 3. Evaluate Risk

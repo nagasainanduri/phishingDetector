@@ -33,7 +33,7 @@ class HeuristicEngine:
     def register_rule(self, rule_func):
         self.rules.append(rule_func)
 
-    def evaluate(self, url: str, page_signals: dict = None, brand_findings: dict = None) -> List[RuleMatch]:
+    def evaluate(self, url: str, page_signals: dict = None, brand_findings: dict = None, threat_intel_findings: list = None) -> List[RuleMatch]:
         try:
             if not url.startswith(('http://', 'https://')):
                 url = f"http://{url}"
@@ -50,6 +50,8 @@ class HeuristicEngine:
                     kwargs['page_signals'] = page_signals
                 if 'brand_findings' in sig.parameters:
                     kwargs['brand_findings'] = brand_findings
+                if 'threat_intel_findings' in sig.parameters:
+                    kwargs['threat_intel_findings'] = threat_intel_findings
                     
                 match = rule(url, parsed, **kwargs)
                 if match:

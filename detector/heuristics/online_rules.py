@@ -73,3 +73,21 @@ def check_ssl_certificate(url, parsed):
         )
     except Exception as e:
         return None
+
+def check_threat_intel(url, parsed, threat_intel_findings=None):
+    if not threat_intel_findings:
+        return None
+        
+    malicious_providers = []
+    for finding in threat_intel_findings:
+        if finding.get("status") == "MALICIOUS":
+            malicious_providers.append(finding["provider"])
+            
+    if malicious_providers:
+        return RuleMatch(
+            rule_id="ONL_002",
+            severity=Severity.CRITICAL,
+            description=f"Flagged as MALICIOUS by Threat Intelligence ({', '.join(malicious_providers)}).",
+            evidence={"threat_intel": threat_intel_findings}
+        )
+    return None
