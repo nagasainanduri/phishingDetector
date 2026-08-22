@@ -5,8 +5,32 @@ from urllib.parse import urlparse
 import logging
 import os
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+def validate_url(url, kaggele_mode=False):
+    """Validate if a string is a proper URL with a domain or IP."""
+    if not url or not isinstance(url, str):
+        return False
+    try:
+        #for kaggele dataset => this dataset does not have http:// or https:// in the URL
+        if kaggele_mode and not url.startswith(('http://', 'https://')):
+            url = f"https://{url}"
+        parsed = urlparse(url)
+        
+        if not kaggele_mode and not parsed.scheme in ['http', 'https']:
+            return False
+        if not parsed.netloc:
+            return False
+
+        if re.match(r'^\d+$', parsed.netloc):
+            return False  # Just a number, not a valid domain or IP
+        
+        # Accept domains or IPs
+        if re.match(r'^([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$|^(\d{1,3}\.){3}\d{1,3}$', parsed.netloc):
+            return True
+        return False
+    except Exception:
+        return False
 
 def load_cache():
     """Load feature cache from file."""
@@ -24,10 +48,10 @@ def save_cache(cache):
     """Save feature cache to file."""
     cache_path = 'models/feature_cache.pkl'
     try:
-        os.makedirs('model', exist_ok=True)
+        os.makedirs('models', exist_ok=True)
         with open(cache_path, 'wb') as f:
             pickle.dump(cache, f)
-        logger.info(f"Cache saved to {cache_path}")
+        logger.debug(f"Cache saved to {cache_path}")
     except Exception as e:
         logger.error(f"Error saving cache: {type(e).__name__} - {str(e)}")
 

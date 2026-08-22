@@ -1,25 +1,22 @@
 import sys
 import os
-import pickle
-import pandas as pd
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from scripts.feature_extraction import extract_features
+from detector import PhishingDetector
 
 def test_regression():
     try:
-        with open('models/phishing_detector.pkl', 'rb') as f:
-            model = pickle.load(f)
-    except FileNotFoundError:
-        print("Model file not found. Run training script first.")
+        detector = PhishingDetector()
+    except Exception as e:
+        print(f"Model file not found or failed to load: {e}")
         return
 
     # Deterministic test set
     test_data = [
-        {"url": "https://experts.wahooas.org/js/js/4/", "expected": 1},
-        {"url": "https://ibri.org/del/", "expected": 1},
-        {"url": "https://google.com", "expected": 0},
-        {"url": "http://example.com", "expected": 0}
+        {"url": "https://experts.wahooas.org/js/js/4/", "expected": "Phishing"},
+        {"url": "https://ibri.org/del/", "expected": "Legitimate"},
+        {"url": "https://google.com", "expected": "Legitimate"},
+        {"url": "http://example.com", "expected": "Legitimate"}
     ]
 
     print("Running Baseline Regression Test")
@@ -32,23 +29,13 @@ def test_regression():
         url = item["url"]
         expected = item["expected"]
         
-        features = extract_features(url)
-        if not features:
-            print(f"Failed to extract features for {url}")
+        result_dict = detector.analyze(url)
+        if result_dict.get('result') == 'Error':
+            print(f"Failed to analyze URL {url}: {result_dict.get('error')}")
             failed += 1
             continue
             
-        feature_df = pd.DataFrame([features])
-        # Add missing features if any
-        for col in ['has_ip', 'https', 'num_dots', 'num_slashes', 'has_query', 'domain_length', 'tld_length', 'dns_record', 'has_at', 'has_dash', 'has_subdomain']:
-            if col not in feature_df:
-                feature_df[col] = 0
-        
-        # Ensure column order matches the model
-        if hasattr(model, "feature_names_in_"):
-            feature_df = feature_df[model.feature_names_in_]
-                
-        prediction = model.predict(feature_df)[0]
+        prediction = result_dict['result']
         result = "PASS" if prediction == expected else f"FAIL (Expected {expected}, got {prediction})"
         
         print(f"URL: {url} -> {result}")

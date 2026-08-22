@@ -2,16 +2,15 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))  # Add project root to sys.path
 from flask import Flask, render_template, request, jsonify
-import pickle
 import pandas as pd
 from datetime import datetime
-from scripts.feature_extraction import extract_features
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import logging
 from cachetools import TTLCache
 import threading
 import warnings
+from detector import PhishingDetector
 
 # Suppress Flask-Limiter in-memory storage warning for dev
 warnings.filterwarnings("ignore", category=UserWarning, module="flask_limiter")
@@ -44,15 +43,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-MODEL_PATH = 'models/phishing_detector.pkl'
 NEW_URLS_PATH = 'data/new_urls.csv'
 
-try:
-    with open(MODEL_PATH, 'rb') as file:
-        model = pickle.load(file)
-except FileNotFoundError:
-    logger.error("Model file not found. Please run 'python scripts/train_model.py' first.")
-    exit(1)
+# Initialize detector
+detector = PhishingDetector()
 
 @app.route('/')
 def index():
@@ -61,10 +55,9 @@ def index():
 @app.route('/predict', methods=['POST'])
 @limiter.limit("10 per second")
 def predict():
-    global model
     data = request.form if request.form else request.json
     urls = data.get('urls') if isinstance(data.get('urls'), list) else [data.get('url')]
-    if not urls:
+    if not urls or not urls[0]:
         logger.warning("No URLs provided in request")
         return jsonify({'error': 'No URLs provided'}), 400
 
@@ -83,29 +76,18 @@ def predict():
 
             # Predict
             try:
-                features = extract_features(url)
-                if features is None:
-                    logger.error(f"Feature extraction failed for URL: {url}")
-                    results.append({'url': url, 'error': 'Unable to verify this URL'})
-                    continue
-                feature_df = pd.DataFrame([features])
-                prediction = model.predict(feature_df)[0]
-                confidence = model.predict_proba(feature_df)[0][prediction]
-                result = 'Phishing' if prediction == 1 else 'Legitimate'
-                result_dict = {
-                    'url': url,
-                    'result': result,
-                    'confidence': round(confidence * 100, 2)
-                }
+                result_dict = detector.analyze(url)
                 results.append(result_dict)
-
-                # Log to new_urls.csv
-                new_urls.append({
-                    'timestamp': datetime.now().isoformat(),
-                    'url': url,
-                    'result': result,
-                    'confidence': confidence
-                })
+                
+                # If there's no error, we log it
+                if 'error' not in result_dict and result_dict.get('result') != 'Error':
+                    # Log to new_urls.csv
+                    new_urls.append({
+                        'timestamp': datetime.now().isoformat(),
+                        'url': url,
+                        'result': result_dict['result'],
+                        'confidence': result_dict['confidence'] / 100.0  # normalize back for CSV
+                    })
 
                 # Cache result
                 with cache_lock:
