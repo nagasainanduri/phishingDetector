@@ -2,6 +2,13 @@ import pickle
 import pandas as pd
 import logging
 import os
+import warnings
+
+try:
+    from sklearn.exceptions import InconsistentVersionWarning
+    warnings.simplefilter("ignore", InconsistentVersionWarning)
+except ImportError:
+    pass
 
 logger = logging.getLogger(__name__)
 

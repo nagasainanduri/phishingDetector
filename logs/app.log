@@ -179,3 +179,16 @@
 2026-08-22 15:19:39,160 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:39] "POST /api/feedback HTTP/1.1" 200 -
 2026-08-22 15:19:40,422 - INFO - Cache hit for URL: https://aniwaves.ru/watch/tongari-boushi-no-atelier-82556/ep-1
 2026-08-22 15:19:40,422 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:40] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 16:28:22,926 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 16:28:22,947 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 16:28:22,948 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 16:28:22,949 - INFO -  * Restarting with stat
+2026-08-22 16:28:25,404 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 16:28:25,412 - WARNING -  * Debugger is active!
+2026-08-22 16:28:25,416 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 16:29:14,396 - INFO -  * Detected change in 'c:\\Users\\Avinash\\Documents\\projects\\phishingDetector\\detector\\models\\predictor.py', reloading
+2026-08-22 16:29:14,949 - INFO -  * Restarting with stat
+2026-08-22 16:29:17,317 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 16:29:17,325 - WARNING -  * Debugger is active!
+2026-08-22 16:29:17,328 - INFO -  * Debugger PIN: 677-211-923
