@@ -30,11 +30,11 @@ The PhishGuard backend is a production-oriented Flask application designed to se
 
 ## Running in Production
 
-Use a WSGI server like `gunicorn` rather than the built-in Flask development server:
+Use a WSGI server like `gunicorn` rather than the built-in Flask development server. A `gunicorn.conf.py` file is provided at the root of the repository for production deployment.
 
 ```bash
-# Example Gunicorn startup command
-gunicorn -w 4 -b 127.0.0.1:5000 app:app
+# Start Gunicorn using the provided configuration file
+gunicorn -c gunicorn.conf.py app:app
 ```
 
 ## API Versioning

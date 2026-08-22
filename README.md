@@ -166,18 +166,27 @@ python scripts/cli.py --url http://example.com
 python scripts/cli.py --file urls.txt
 ```
 
-## 11. Privacy Model
+## 11. Running in Production
+
+Use a WSGI server like `gunicorn` rather than the built-in Flask development server. A `gunicorn.conf.py` file is provided at the root of the repository for production deployment.
+
+```bash
+# Start Gunicorn using the provided configuration file
+gunicorn -c gunicorn.conf.py app:app
+```
+
+## 12. Privacy Model
 
 PhishGuard defaults to **Privacy-Preserving (Local Only) Mode**.
 - **Local Only**: The API will *not* reach out to third-party APIs (VirusTotal/PhishTank) to prevent leaking browsing behavior.
 - **Telemetry**: Disabled by default. If enabled, only anonymized metrics are logged.
 - **Feedback**: When users submit feedback, they can choose to withhold the raw URL. The system will log a SHA-256 hash instead.
 
-## 12. Threat Intelligence Integrations
+## 13. Threat Intelligence Integrations
 
 PhishGuard optionally integrates with **PhishTank** and **VirusTotal**. To enable them, set the environment variables: `PHISHTANK_API_KEY` and `VIRUSTOTAL_API_KEY`. 
 
-## 13. Testing
+## 14. Testing
 
 The repository uses `pytest` for all unit and integration testing.
 ```bash
@@ -188,16 +197,16 @@ pip install pytest flake8
 pytest tests/ -v
 ```
 
-## 14. Screenshots/Demo
+## 15. Screenshots/Demo
 to be added
 
-## 15. Limitations
+## 16. Limitations
 
 - **Model Stagnation**: The Random Forest model is trained on a static dataset. It will degrade over time without a continuous retraining pipeline.
 - **Open Redirects**: Inherits the trust of the root domain, leading to False Negatives.
 - **Uncalibrated Probabilities**: The ML probability output is currently uncalibrated and should not be treated as an exact statistical probability of maliciousness.
 
-## 16. Future Work
+## 17. Future Work
 
 1. Automate the feedback loop to retrain the ML model weekly based on validated user feedback.
 2. Expand the dataset to include a global scale of newly registered domains.
