@@ -18,7 +18,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
-    font-family: 'Unica One', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Smooch Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -141,7 +141,7 @@ h1 {
 
 .percentage {
     fill: var(--warning-red);
-    font-family: 'Unica One', sans-serif;
+    font-family: 'Smooch Sans', sans-serif;
     font-size: 10px;
     text-anchor: middle;
     font-weight: bold;
