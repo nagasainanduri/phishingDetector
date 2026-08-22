@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>PhishGuard Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-dark: #000000;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --accent: #ffffff;
+            --accent-text: #000000;
+            --success: #00e676;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            padding: 20px;
-            max-width: 500px;
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 600px;
             margin: 0 auto;
-            color: #333;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
         }
 
         h2 {
-            margin-top: 0;
-            color: #d32f2f;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .setting-group {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .setting-group h3 {
             margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
         }
 
         .setting-row {
@@ -39,50 +66,99 @@
 
         .setting-row label {
             flex-grow: 1;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 14px;
         }
 
         .setting-row select,
-        .setting-row input[type="text"] {
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 200px;
+        .setting-row input[type="text"],
+        .setting-row input[type="url"] {
+            padding: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-primary);
+            width: 250px;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 0;
+            outline: none;
+        }
+        
+        .setting-row select:focus,
+        .setting-row input[type="text"]:focus,
+        .setting-row input[type="url"]:focus {
+            border-color: var(--accent);
+        }
+
+        .setting-row input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.5);
+            cursor: pointer;
+            border-radius: 0;
+            position: relative;
+        }
+        
+        .setting-row input[type="checkbox"]:checked {
+            background: var(--accent);
+        }
+        
+        .setting-row input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid var(--accent-text);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
         }
 
         .help-text {
             font-size: 12px;
-            color: #666;
+            color: var(--text-secondary);
             margin-top: 4px;
             margin-bottom: 0;
+            line-height: 1.5;
         }
 
         #save-btn {
-            background-color: #d32f2f;
-            color: white;
+            background-color: var(--accent);
+            color: var(--accent-text);
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
+            padding: 15px 20px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             width: 100%;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            border-radius: 0;
+            transition: all 0.2s;
         }
 
         #save-btn:hover {
-            background-color: #b71c1c;
+            background-color: #cccccc;
         }
 
         #status {
-            margin-top: 10px;
+            margin-top: 15px;
             text-align: center;
-            font-weight: bold;
-            color: #2e7d32;
+            font-weight: 700;
+            color: var(--success);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
         }
     </style>
 </head>
-
 <body>
-    <h2>PhishGuard Settings</h2>
+    <div class="header">
+        <h2>PhishGuard Settings</h2>
+    </div>
 
     <div class="setting-group">
         <h3>Server Configuration</h3>
@@ -98,7 +174,7 @@
         <div class="setting-row">
             <label for="privacy-mode">Threat Intelligence:</label>
             <select id="privacy-mode">
-                <option value="local_only"> ML & Heuristics Only</option>
+                <option value="local_only">ML & Heuristics Only</option>
                 <option value="local_online">ML + Online Intelligence</option>
             </select>
         </div>
@@ -115,7 +191,7 @@
         <p class="help-text">If disabled, the extension will NOT automatically scan pages you visit. You must click the
             extension icon to scan manually.</p>
 
-        <div class="setting-row" style="margin-top: 15px;">
+        <div class="setting-row" style="margin-top: 20px;">
             <label for="telemetry">Telemetry & Logging:</label>
             <input type="checkbox" id="telemetry">
         </div>
@@ -128,5 +204,4 @@
 
     <script src="options.js"></script>
 </body>
-
 </html>

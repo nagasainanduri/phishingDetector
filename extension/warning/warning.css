@@ -1,10 +1,13 @@
 :root {
-    --bg-red: #d32f2f;
-    --text-white: #ffffff;
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --btn-primary-bg: #ffffff;
-    --btn-primary-text: #d32f2f;
-    --btn-ghost-text: rgba(255, 255, 255, 0.7);
+    --bg-color: #ffffff;
+    --glass-bg: rgba(138, 3, 3, 0.03);
+    --glass-border: rgba(138, 3, 3, 0.2);
+    --text-primary: #8a0303; /* Blood red */
+    --text-secondary: #444444;
+    --accent: #8a0303;
+    --accent-text: #ffffff;
+    --success: #00e676;
+    --warning: #ff9800;
 }
 
 * {
@@ -12,8 +15,8 @@
 }
 
 body {
-    background-color: var(--bg-red);
-    color: var(--text-white);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -21,6 +24,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background: radial-gradient(circle at top, #ffffff, #fdf5f5);
 }
 
 .warning-container {
@@ -39,12 +43,15 @@ body {
     width: 48px;
     height: 48px;
     margin-right: 16px;
+    color: var(--accent);
 }
 
 h1 {
     font-size: 32px;
     margin: 0;
-    font-weight: 500;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .description {
@@ -52,49 +59,61 @@ h1 {
     line-height: 1.5;
     margin-bottom: 40px;
     max-width: 700px;
+    color: var(--text-secondary);
 }
 
 .card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 24px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 0; /* Sharp edges */
+    padding: 30px;
     margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 12px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
 }
 
 .card-header h2 {
     margin: 0;
     font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .badge {
-    background: rgba(0,0,0,0.2);
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-weight: 600;
+    background: rgba(138, 3, 3, 0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 0;
+    font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* Score Ring */
 .score-container {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--glass-border);
 }
 
 .score-ring {
     width: 80px;
     height: 80px;
-    margin-right: 20px;
+    margin-right: 25px;
 }
 
 .circular-chart {
@@ -105,18 +124,18 @@ h1 {
 }
 .circle-bg {
     fill: none;
-    stroke: rgba(255,255,255,0.2);
-    stroke-width: 3.8;
+    stroke: rgba(138, 3, 3, 0.1);
+    stroke-width: 3;
 }
 .circle {
     fill: none;
-    stroke: #fff;
-    stroke-width: 3.8;
-    stroke-linecap: round;
+    stroke: var(--accent);
+    stroke-width: 3.5;
+    stroke-linecap: square;
     transition: stroke-dasharray 1s ease-out;
 }
 .percentage {
-    fill: #fff;
+    fill: var(--accent);
     font-family: sans-serif;
     font-size: 10px;
     text-anchor: middle;
@@ -125,66 +144,115 @@ h1 {
 
 .score-label {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .sub-label {
-    font-size: 14px;
-    font-weight: normal;
-    opacity: 0.8;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
 }
 
 .reasons-box {
-    background: rgba(0,0,0,0.15);
-    padding: 16px;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    margin-bottom: 15px;
 }
 
 .reasons-box h3 {
     margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 16px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 8px;
 }
 
 .reasons-box ul {
     margin: 0;
     padding-left: 20px;
     line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 .actions {
     display: flex;
-    gap: 16px;
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .btn {
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 500;
+    padding: 15px 30px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    border: none;
+    border: 1px solid var(--accent);
     transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .btn-primary {
-    background: var(--btn-primary-bg);
-    color: var(--btn-primary-text);
+    background: var(--accent);
+    color: var(--accent-text);
 }
 
 .btn-primary:hover {
-    background: #f0f0f0;
+    background: #5c0202;
+    border-color: #5c0202;
 }
 
 .btn-ghost {
     background: transparent;
-    color: var(--btn-ghost-text);
-    border: 1px solid var(--btn-ghost-text);
+    color: var(--accent);
 }
 
 .btn-ghost:hover {
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    border-color: #fff;
+    background: rgba(138, 3, 3, 0.05);
 }
+
+.hidden {
+    display: none !important;
+}
+
+/* Feedback Buttons */
+.feedback-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.feedback-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 10px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+    transition: all 0.2s;
+}
+
+.feedback-btn:hover {
+    background: rgba(138, 3, 3, 0.05);
+}
+
+.feedback-btn.correct { border-color: var(--success); color: var(--success); }
+.feedback-btn.correct:hover { background: rgba(0, 230, 118, 0.05); }
+
+.feedback-btn.fp { border-color: var(--warning); color: var(--warning); }
+.feedback-btn.fp:hover { background: rgba(255, 152, 0, 0.05); }

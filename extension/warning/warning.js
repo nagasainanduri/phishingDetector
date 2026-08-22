@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const targetUrl = params.get('url');
-    
+
     // Safety check, if no URL just go to a blank page or google
     if (!targetUrl) {
         window.location.href = 'https://www.google.com';
         return;
     }
-    
+
     // Extract parameters
     const score = parseInt(params.get('score')) || 0;
     const severity = params.get('sev') || 'UNKNOWN';
@@ -15,17 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const reasonsRaw = params.get('reasons');
     const modelExpRaw = params.get('model_explanation');
     const modelLimitation = params.get('explanation_limitation');
-    
+
     // Update UI elements
     document.getElementById('url-display').textContent = targetUrl;
     document.getElementById('severity-badge').textContent = severity;
     document.getElementById('action-label').textContent = `Policy Action: ${action}`;
-    
+
     // Update Score Ring
     const scoreCircle = document.getElementById('score-circle');
     const scoreText = document.getElementById('score-text');
     scoreText.textContent = score;
-    
+
     // Give a slight delay for the animation to kick in
     setTimeout(() => {
         scoreCircle.setAttribute('stroke-dasharray', `${score}, 100`);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         warningTitle.textContent = "Suspected Deceptive Site Ahead";
         document.body.style.backgroundColor = "#e67c73"; // slightly lighter orange/red for warning
     }
-    
+
     // Parse and display reasons
     if (reasonsRaw) {
         try {
@@ -48,24 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
             reasons.forEach(r => {
                 const li = document.createElement('li');
                 li.textContent = r;
-                
+
                 // Highlight Threat Intel or Brand Impersonation
                 if (r.includes("MALICIOUS by Threat Intelligence") || r.includes("Brand Impersonation")) {
                     li.style.fontWeight = "bold";
                 }
-                
+
                 list.appendChild(li);
             });
         } catch (e) {
             console.error("Failed to parse reasons:", e);
         }
     }
-    
+
     // Parse and display model explanations
     const expContainer = document.getElementById('model-explanation-container');
     const expList = document.getElementById('explanation-list');
     const expLimitation = document.getElementById('explanation-limitation');
-    
+
     if (modelLimitation && modelLimitation !== "null") {
         expLimitation.textContent = modelLimitation;
         expLimitation.classList.remove('hidden');
@@ -88,12 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Button event listeners
     document.getElementById('btn-back').addEventListener('click', () => {
-        // Go back in history if possible, else go to a safe page
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = 'https://www.google.com';
-        }
+        window.location.replace('chrome://newtab/');
     });
 
     document.getElementById('btn-continue').addEventListener('click', () => {
@@ -108,17 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Feedback event listeners
     const btnCorrect = document.getElementById('btn-feedback-correct');
     const btnFP = document.getElementById('btn-feedback-fp');
-    
+
     const submitFeedback = (feedbackType) => {
         let shareRawUrl = false;
         if (feedbackType === 'false_positive') {
             shareRawUrl = confirm("To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click Cancel, we will only log an anonymized hash for statistical tracking).");
         }
-        
+
         chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
             const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/v1/feedback`;
             const headers = { 'Content-Type': 'application/json' };
-            
+
             fetch(apiUrl, {
                 method: 'POST',
                 headers: headers,
@@ -138,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch(e => console.error("Feedback error", e));
         });
     };
-    
+
     if (btnCorrect) btnCorrect.onclick = () => submitFeedback('correct');
     if (btnFP) btnFP.onclick = () => submitFeedback('false_positive');
 });
