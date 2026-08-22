@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.info("DOM signals unavailable for this tab.");
             }
             chrome.storage.sync.get({
-                backend_url: 'http://127.0.0.1:5000',
+                backend_url: CONFIG.BACKEND_URL,
                 privacy_mode: 'local_only',
                 telemetry: false
             }, async (settings) => {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 shareRawUrl = await showCustomConfirm();
             }
             
-            chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
+            chrome.storage.sync.get({ backend_url: CONFIG.BACKEND_URL }, (settings) => {
                 const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/v1/feedback`;
                 const headers = { 'Content-Type': 'application/json' };
                 

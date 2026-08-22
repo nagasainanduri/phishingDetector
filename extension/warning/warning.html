@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Warning - PhishGuard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&family=Unica+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&family=Unica+One&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="warning.css">
 </head>
+
 <body>
     <div class="warning-container">
         <div class="icon-header">
-            <svg class="alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <svg class="alert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                </path>
                 <line x1="12" y1="9" x2="12" y2="13"></line>
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
             </svg>
             <h1 id="warning-title">Deceptive site ahead</h1>
         </div>
-        
+
         <p class="description">
-            Attackers on <strong id="url-display">this site</strong> may trick you into doing something dangerous like installing software or revealing your personal information (for example, passwords, phone numbers, or credit cards).
+            Attackers on <strong id="url-display">this site</strong> may trick you into doing something dangerous like
+            installing software or revealing your personal information (for example, passwords, phone numbers, or credit
+            cards).
         </p>
-        
+
         <div class="card">
             <div class="card-header">
                 <h2>Risk Assessment</h2>
                 <span id="severity-badge" class="badge">UNKNOWN</span>
             </div>
-            
+
             <div class="score-container">
                 <div class="score-ring">
                     <svg viewBox="0 0 36 36" class="circular-chart">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" id="score-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" id="score-circle" stroke-dasharray="0, 100"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                         <text x="18" y="20.35" class="percentage" id="score-text">0</text>
                     </svg>
                 </div>
-                <div class="score-label">Risk Score<br><span id="action-label" class="sub-label">Recommended Action</span></div>
+                <div class="score-label">Risk Score<br><span id="action-label" class="sub-label">Recommended
+                        Action</span></div>
             </div>
 
             <div class="reasons-box">
@@ -47,31 +57,44 @@
                     <!-- Reasons injected here -->
                 </ul>
             </div>
-            
+
             <div id="model-explanation-container" class="reasons-box hidden">
                 <h3>AI Model Explanation</h3>
-                <p id="explanation-limitation" class="hidden" style="font-size: 13px; font-style: italic; color: var(--text-secondary);"></p>
+                <p id="explanation-limitation" class="hidden"
+                    style="font-size: 13px; font-style: italic; color: var(--text-secondary);"></p>
                 <ul id="explanation-list">
                     <!-- Model Explanations injected here -->
                 </ul>
             </div>
-            
+
             <div id="feedback-container" class="reasons-box" style="text-align: center;">
                 <h3>Was this warning accurate?</h3>
                 <div class="feedback-buttons">
                     <button id="btn-feedback-correct" class="feedback-btn correct">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+                            <path
+                                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                            </path>
+                        </svg>
                         Correct
                     </button>
                     <button id="btn-feedback-fp" class="feedback-btn fp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+                            <path
+                                d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17">
+                            </path>
+                        </svg>
                         Safe (False Positive)
                     </button>
                 </div>
-                <p id="feedback-status" class="hidden" style="font-size: 12px; color: var(--success); margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;"></p>
+                <p id="feedback-status" class="hidden"
+                    style="font-size: 12px; color: var(--success); margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;">
+                </p>
             </div>
         </div>
-        
+
         <div class="actions">
             <button id="btn-back" class="btn btn-primary">Back to safety</button>
             <button id="btn-continue" class="btn btn-ghost">Continue anyway</button>
@@ -82,14 +105,19 @@
     <div id="custom-confirm-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <h3>Share URL for Dataset?</h3>
-            <p>To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click No, we will only log an anonymized hash for statistical tracking).</p>
+            <p>To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click No, we
+                will only log an anonymized hash for statistical tracking).</p>
             <div class="modal-actions">
-                <button id="modal-btn-yes" class="feedback-btn fp" style="width: 100%; justify-content: center; margin-bottom: 5px;">Yes, Share URL</button>
-                <button id="modal-btn-no" class="feedback-btn" style="width: 100%; justify-content: center;">No, Keep Private</button>
+                <button id="modal-btn-yes" class="feedback-btn fp"
+                    style="width: 100%; justify-content: center; margin-bottom: 5px;">Yes, Share URL</button>
+                <button id="modal-btn-no" class="feedback-btn" style="width: 100%; justify-content: center;">No, Keep
+                    Private</button>
             </div>
         </div>
     </div>
 
+    <script src="../config.js"></script>
     <script src="warning.js"></script>
 </body>
+
 </html>

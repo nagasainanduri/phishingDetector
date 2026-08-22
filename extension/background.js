@@ -1,3 +1,5 @@
+importScripts('config.js');
+
 chrome.runtime.onInstalled.addListener(() => {
     console.log("PhishGuard MVP installed.");
 });
@@ -8,7 +10,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log(`Performing active scan on: ${request.url}`);
         
         chrome.storage.sync.get({
-            backend_url: 'http://127.0.0.1:5000',
+            backend_url: CONFIG.BACKEND_URL,
             privacy_mode: 'local_only',
             telemetry: false
         }, (settings) => {

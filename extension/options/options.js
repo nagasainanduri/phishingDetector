@@ -1,6 +1,6 @@
 // Default settings
 const DEFAULT_SETTINGS = {
-    backend_url: 'http://127.0.0.1:5000',
+    backend_url: CONFIG.BACKEND_URL,
     privacy_mode: 'local_only',
     active_scanning: false,
     telemetry: false
