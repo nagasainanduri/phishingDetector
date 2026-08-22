@@ -1,0 +1,110 @@
+{
+    "rf_baseline": {
+        "timestamp": "2026-08-22T11:58:46.363533",
+        "model": "rf_baseline",
+        "metrics": {
+            "training_resources": {
+                "time_seconds": 0.8328897953033447,
+                "peak_memory_mb": 33.30730438232422,
+                "process_memory_mb": 473.109375
+            },
+            "inference_resources": {
+                "time_seconds": 0.04381561279296875,
+                "peak_memory_mb": 3.4582929611206055,
+                "process_memory_mb": 474.0546875,
+                "latency_per_sample_ms": 0.006222041010077926
+            },
+            "evaluation": {
+                "accuracy": 0.9098267537631355,
+                "precision": 0.8933669185558354,
+                "recall": 0.926291352292513,
+                "f1": 0.9095312722610058,
+                "roc_auc": 0.9692197253413058,
+                "pr_auc": 0.9653155435197788,
+                "fpr": 0.10595105672969966,
+                "fnr": 0.07370864770748695
+            }
+        }
+    },
+    "xgboost": {
+        "timestamp": "2026-08-22T11:58:47.243787",
+        "model": "xgboost",
+        "metrics": {
+            "training_resources": {
+                "time_seconds": 0.8096997737884521,
+                "peak_memory_mb": 0.5916624069213867,
+                "process_memory_mb": 644.078125
+            },
+            "inference_resources": {
+                "time_seconds": 0.040824174880981445,
+                "peak_memory_mb": 0.40740966796875,
+                "process_memory_mb": 644.9609375,
+                "latency_per_sample_ms": 0.005797241533794582
+            },
+            "evaluation": {
+                "accuracy": 0.9088327179778471,
+                "precision": 0.8900946021146355,
+                "recall": 0.928322692977365,
+                "f1": 0.9088068181818182,
+                "roc_auc": 0.9711267501066833,
+                "pr_auc": 0.967872727139163,
+                "fpr": 0.10984427141268076,
+                "fnr": 0.07167730702263495
+            }
+        }
+    },
+    "catboost": {
+        "timestamp": "2026-08-22T11:58:48.904353",
+        "model": "catboost",
+        "metrics": {
+            "training_resources": {
+                "time_seconds": 1.6251962184906006,
+                "peak_memory_mb": 0.054290771484375,
+                "process_memory_mb": 730.98828125
+            },
+            "inference_resources": {
+                "time_seconds": 0.012440204620361328,
+                "peak_memory_mb": 0.11340713500976562,
+                "process_memory_mb": 731.62890625,
+                "latency_per_sample_ms": 0.001766572652706806
+            },
+            "evaluation": {
+                "accuracy": 0.9085487077534792,
+                "precision": 0.890033407572383,
+                "recall": 0.9277423099245502,
+                "f1": 0.9084967320261438,
+                "roc_auc": 0.9716342221349962,
+                "pr_auc": 0.9685453932805039,
+                "fpr": 0.10984427141268076,
+                "fnr": 0.0722576900754498
+            }
+        }
+    },
+    "char_cnn": {
+        "timestamp": "2026-08-22T11:59:28.181199",
+        "model": "char_cnn",
+        "metrics": {
+            "training_resources": {
+                "time_seconds": 38.21972107887268,
+                "peak_memory_mb": 67.15315437316895,
+                "process_memory_mb": 914.6796875
+            },
+            "inference_resources": {
+                "time_seconds": 0.5111300945281982,
+                "peak_memory_mb": 10.746037483215332,
+                "process_memory_mb": 812.2734375,
+                "latency_per_sample_ms": 0.07258308641411507
+            },
+            "evaluation": {
+                "accuracy": 0.9333996023856859,
+                "precision": 0.9490196078431372,
+                "recall": 0.9129425420777714,
+                "f1": 0.9306315633781985,
+                "roc_auc": 0.9854525761195938,
+                "pr_auc": 0.9854668280672462,
+                "fpr": 0.04699666295884316,
+                "fnr": 0.08705745792222867
+            }
+        }
+    }
+}

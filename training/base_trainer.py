@@ -14,7 +14,7 @@ class BaseTrainer(ABC):
     def build_model(self):
         pass
         
-    def train(self, X_train, y_train):
+    def train(self, X_train, y_train, urls_train=None):
         if self.model is None:
             self.build_model()
             
@@ -27,7 +27,7 @@ class BaseTrainer(ABC):
         self.metrics['training_resources'] = res
         return res
         
-    def evaluate(self, X_test, y_test):
+    def evaluate(self, X_test, y_test, urls_test=None):
         tracker = ResourceTracker()
         tracker.start()
         
