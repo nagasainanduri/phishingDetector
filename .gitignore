@@ -4,3 +4,4 @@ data/new_urls.csv
 data/feedback.csv
 *.csv
 extension/config.js
+extension/*.zip
