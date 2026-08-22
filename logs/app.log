@@ -282,3 +282,26 @@
 2026-08-22 17:34:57,017 - INFO - 127.0.0.1 - - [22/Aug/2026 17:34:57] "POST /api/v1/analyze HTTP/1.1" 200 -
 2026-08-22 17:35:10,569 - INFO - 127.0.0.1 - - [22/Aug/2026 17:35:10] "POST /api/v1/analyze HTTP/1.1" 200 -
 2026-08-22 17:39:42,977 - INFO - 127.0.0.1 - - [22/Aug/2026 17:39:42] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:45:04,147 - INFO - Feedback logged: false_positive for https://www.mictech.edu.in/
+2026-08-22 17:45:04,148 - INFO - 127.0.0.1 - - [22/Aug/2026 17:45:04] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:45:37,029 - INFO - 127.0.0.1 - - [22/Aug/2026 17:45:37] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:45:39,999 - INFO - Feedback logged: correct for HASHED:32924d85eac8881fe9b2dd7d1478e50fce107ef0b0bb4c99554528f94361bbf0
+2026-08-22 17:45:40,000 - INFO - 127.0.0.1 - - [22/Aug/2026 17:45:40] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:46:38,418 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:46:38,419 - INFO - 127.0.0.1 - - [22/Aug/2026 17:46:38] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:49:11,022 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:49:11,023 - INFO - 127.0.0.1 - - [22/Aug/2026 17:49:11] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:49:13,524 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:49:13,524 - INFO - 127.0.0.1 - - [22/Aug/2026 17:49:13] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:50:54,681 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 17:50:54,682 - INFO - 127.0.0.1 - - [22/Aug/2026 17:50:54] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:54:06,758 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:54:06,759 - INFO - 127.0.0.1 - - [22/Aug/2026 17:54:06] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:54:15,684 - INFO - Feedback logged: correct for HASHED:32924d85eac8881fe9b2dd7d1478e50fce107ef0b0bb4c99554528f94361bbf0
+2026-08-22 17:54:15,684 - INFO - 127.0.0.1 - - [22/Aug/2026 17:54:15] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:54:17,494 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:54:17,494 - INFO - 127.0.0.1 - - [22/Aug/2026 17:54:17] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:54:22,197 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 17:54:22,198 - INFO - 127.0.0.1 - - [22/Aug/2026 17:54:22] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 18:02:41,954 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard
+2026-08-22 18:02:41,955 - INFO - 127.0.0.1 - - [22/Aug/2026 18:02:41] "POST /api/v1/analyze HTTP/1.1" 200 -

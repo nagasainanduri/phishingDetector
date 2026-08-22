@@ -40,3 +40,64 @@ function restoreOptions() {
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save-btn').addEventListener('click', saveOptions);
+
+// Add Custom Modal Logic
+const showCustomConfirm = (title, message) => {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('custom-confirm-modal');
+        const titleEl = document.getElementById('modal-title');
+        const textEl = document.getElementById('modal-text');
+        const btnYes = document.getElementById('modal-btn-yes');
+        const btnNo = document.getElementById('modal-btn-no');
+        
+        titleEl.textContent = title;
+        textEl.textContent = message;
+        
+        modal.classList.remove('hidden');
+        
+        const cleanup = () => {
+            modal.classList.add('hidden');
+            btnYes.removeEventListener('click', onYes);
+            btnNo.removeEventListener('click', onNo);
+        };
+        
+        const onYes = () => { cleanup(); resolve(true); };
+        const onNo = () => { cleanup(); resolve(false); };
+        
+        btnYes.addEventListener('click', onYes);
+        btnNo.addEventListener('click', onNo);
+    });
+};
+
+document.getElementById('active-scanning').addEventListener('change', async (e) => {
+    if (e.target.checked) {
+        e.target.checked = false; // Revert immediately
+        const confirmed = await showCustomConfirm(
+            "Enable Active Scanning?",
+            "This will automatically scan every page you visit. The extension will read the content of all pages you navigate to in order to detect phishing. Do you agree?"
+        );
+        if (confirmed) e.target.checked = true;
+    }
+});
+
+document.getElementById('telemetry').addEventListener('change', async (e) => {
+    if (e.target.checked) {
+        e.target.checked = false; // Revert immediately
+        const confirmed = await showCustomConfirm(
+            "Enable Telemetry?",
+            "Allow the backend to anonymously store queried URLs to improve the detection model over time. No personally identifiable information is stored. Do you agree?"
+        );
+        if (confirmed) e.target.checked = true;
+    }
+});
+
+document.getElementById('privacy-mode').addEventListener('change', async (e) => {
+    if (e.target.value === 'local_online') {
+        e.target.value = 'local_only'; // Revert immediately
+        const confirmed = await showCustomConfirm(
+            "Enable Online Intelligence?",
+            "This will allow the backend to query 3rd-party intelligence providers (like Google Safe Browsing) by sharing the URLs you visit. Do you agree?"
+        );
+        if (confirmed) e.target.value = 'local_online';
+    }
+});
