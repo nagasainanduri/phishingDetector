@@ -21,11 +21,21 @@ window.addEventListener('load', () => {
         return;
     }
 
-    const signals = extractStructuralSignals();
-    chrome.runtime.sendMessage({
-        action: "active_scan",
-        url: window.location.href,
-        dom_signals: signals
+    // Check privacy settings before auto-scanning
+    chrome.storage.sync.get({
+        active_scanning: false // DEFAULT TO FALSE FOR PRIVACY
+    }, (items) => {
+        if (!items.active_scanning) {
+            console.log("PhishGuard: Active scanning disabled by privacy settings.");
+            return;
+        }
+
+        const signals = extractStructuralSignals();
+        chrome.runtime.sendMessage({
+            action: "active_scan",
+            url: window.location.href,
+            dom_signals: signals
+        });
     });
 });
 

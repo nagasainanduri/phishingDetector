@@ -13,11 +13,14 @@ class ThreatIntelAggregator:
         self.cache = {}
         self.cache_ttl = cache_ttl_seconds
 
-    def analyze(self, url: str) -> List[Dict[str, Any]]:
+    def analyze(self, url: str, privacy_mode: str = "local_only") -> List[Dict[str, Any]]:
         """
         Query all active providers for the given URL.
         Uses an in-memory cache to respect rate limits and reduce latency.
         """
+        if privacy_mode == "local_only":
+            return []
+            
         current_time = time.time()
         
         # Check cache

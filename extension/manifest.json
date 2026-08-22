@@ -4,12 +4,19 @@
   "version": "1.0",
   "description": "Scan URLs using the PhishGuard Risk Engine.",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "host_permissions": [
     "http://127.0.0.1:5000/*",
-    "http://localhost:5000/*"
+    "http://localhost:5000/*",
+    "https://*/*",
+    "http://*/*"
   ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "Scan this page"

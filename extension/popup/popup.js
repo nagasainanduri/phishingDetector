@@ -49,35 +49,51 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.warn("Could not get DOM signals from tab (content script might not be loaded on this page):", err);
             }
 
-            const response = await fetch('http://127.0.0.1:5000/api/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ url: currentUrl, page_signals: domSignals })
-            });
+            chrome.storage.sync.get({
+                backend_url: 'http://127.0.0.1:5000',
+                privacy_mode: 'local_only',
+                telemetry: false
+            }, async (settings) => {
+                try {
+                    const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/predict`;
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            url: currentUrl, 
+                            page_signals: domSignals,
+                            privacy_mode: settings.privacy_mode,
+                            telemetry: settings.telemetry
+                        })
+                    });
 
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status}`);
-            }
+                    if (!response.ok) {
+                        throw new Error(`Server returned ${response.status}`);
+                    }
 
-            const data = await response.json();
-            
-            if (data.length > 0) {
-                const result = data[0];
-                if (result.error) {
-                    showError(result.error);
-                } else {
-                    showResult(result);
+                    const data = await response.json();
+                    
+                    if (data.length > 0) {
+                        const result = data[0];
+                        if (result.error) {
+                            showError(result.error);
+                        } else {
+                            showResult(result);
+                        }
+                    } else {
+                        showError("No data received from API");
+                    }
+                } catch (err) {
+                    showError(`Detection API unreachable: ${err.message}. Is the local Flask server running?`);
+                } finally {
+                    scanBtn.textContent = 'Re-Scan Tab';
+                    scanBtn.disabled = false;
                 }
-            } else {
-                showError("No data received from API");
-            }
+            });
         } catch (err) {
-            showError(`Detection API unreachable: ${err.message}. Is the local Flask server running?`);
-        } finally {
-            scanBtn.textContent = 'Re-Scan Tab';
-            scanBtn.disabled = false;
+            // Error caught from DOM extraction
         }
     });
 
@@ -151,5 +167,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             expContainer.classList.add('hidden');
         }
+        
+        // Show feedback container
+        const feedbackContainer = document.getElementById('feedback-container');
+        feedbackContainer.classList.remove('hidden');
+        
+        // Wire up feedback buttons
+        const btnCorrect = document.getElementById('btn-feedback-correct');
+        const btnFP = document.getElementById('btn-feedback-fp');
+        const btnFN = document.getElementById('btn-feedback-fn');
+        
+        const submitFeedback = (feedbackType) => {
+            let shareRawUrl = false;
+            if (feedbackType === 'false_positive' || feedbackType === 'false_negative') {
+                shareRawUrl = confirm("To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click Cancel, we will only log an anonymized hash for statistical tracking).");
+            }
+            
+            chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
+                const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/feedback`;
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        url: currentUrl,
+                        feedback_type: feedbackType,
+                        share_raw_url: shareRawUrl,
+                        risk_score: result.risk_score,
+                        prediction: result.result
+                    })
+                }).then(() => {
+                    const status = document.getElementById('feedback-status');
+                    status.textContent = 'Feedback submitted!';
+                    status.classList.remove('hidden');
+                    btnCorrect.disabled = true;
+                    btnFP.disabled = true;
+                    btnFN.disabled = true;
+                }).catch(e => console.error("Feedback error", e));
+            });
+        };
+        
+        btnCorrect.onclick = () => submitFeedback('correct');
+        btnFP.onclick = () => submitFeedback('false_positive');
+        btnFN.onclick = () => submitFeedback('false_negative');
     }
 });

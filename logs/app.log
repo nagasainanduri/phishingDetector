@@ -143,3 +143,13 @@
 2026-08-22 14:50:06,132 - INFO - 127.0.0.1 - - [22/Aug/2026 14:50:06] "POST /api/predict HTTP/1.1" 200 -
 2026-08-22 14:50:14,440 - INFO - Cache hit for URL: https://www.mictech.edu.in/
 2026-08-22 14:50:14,440 - INFO - 127.0.0.1 - - [22/Aug/2026 14:50:14] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:04:18,176 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 15:04:18,193 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 15:04:18,194 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 15:04:18,195 - INFO -  * Restarting with stat
+2026-08-22 15:04:20,651 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 15:04:20,658 - WARNING -  * Debugger is active!
+2026-08-22 15:04:20,661 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 15:04:50,053 - INFO - 127.0.0.1 - - [22/Aug/2026 15:04:50] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:07:05,852 - INFO - 127.0.0.1 - - [22/Aug/2026 15:07:05] "POST /api/predict HTTP/1.1" 200 -

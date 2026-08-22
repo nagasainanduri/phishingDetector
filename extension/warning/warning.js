@@ -104,4 +104,39 @@ document.addEventListener('DOMContentLoaded', () => {
         bypassUrl.searchParams.append('phishguard_bypass', '1');
         window.location.href = bypassUrl.href;
     });
+
+    // Feedback event listeners
+    const btnCorrect = document.getElementById('btn-feedback-correct');
+    const btnFP = document.getElementById('btn-feedback-fp');
+    
+    const submitFeedback = (feedbackType) => {
+        let shareRawUrl = false;
+        if (feedbackType === 'false_positive') {
+            shareRawUrl = confirm("To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click Cancel, we will only log an anonymized hash for statistical tracking).");
+        }
+        
+        chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
+            const apiUrl = `${settings.backend_url.replace(/\/$/, '')}/api/feedback`;
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    url: targetUrl,
+                    feedback_type: feedbackType,
+                    share_raw_url: shareRawUrl,
+                    risk_score: score,
+                    prediction: severity
+                })
+            }).then(() => {
+                const status = document.getElementById('feedback-status');
+                status.textContent = 'Feedback submitted! Thank you.';
+                status.classList.remove('hidden');
+                btnCorrect.disabled = true;
+                btnFP.disabled = true;
+            }).catch(e => console.error("Feedback error", e));
+        });
+    };
+    
+    if (btnCorrect) btnCorrect.onclick = () => submitFeedback('correct');
+    if (btnFP) btnFP.onclick = () => submitFeedback('false_positive');
 });

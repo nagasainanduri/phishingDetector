@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard Settings</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            color: #333;
+        }
+        h2 {
+            margin-top: 0;
+            color: #d32f2f;
+        }
+        .setting-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .setting-group h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .setting-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .setting-row label {
+            flex-grow: 1;
+            font-weight: 500;
+        }
+        .setting-row select, .setting-row input[type="text"] {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .help-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+            margin-bottom: 0;
+        }
+        #save-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        #save-btn:hover {
+            background-color: #b71c1c;
+        }
+        #status {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <h2>PhishGuard Settings</h2>
+    
+    <div class="setting-group">
+        <h3>Server Configuration</h3>
+        <div class="setting-row">
+            <label for="backend-url">Backend Endpoint:</label>
+            <input type="text" id="backend-url" placeholder="http://127.0.0.1:5000">
+        </div>
+        <p class="help-text">The URL of your PhishGuard engine.</p>
+    </div>
+    
+    <div class="setting-group">
+        <h3>Privacy & Intelligence</h3>
+        <div class="setting-row">
+            <label for="privacy-mode">Threat Intelligence:</label>
+            <select id="privacy-mode">
+                <option value="local_only">Local ML & Heuristics Only</option>
+                <option value="local_online">Local + Online Intelligence</option>
+            </select>
+        </div>
+        <p class="help-text">"Local Only" prevents the backend from sharing the URL with 3rd-party intelligence providers (like Google Safe Browsing).</p>
+    </div>
+    
+    <div class="setting-group">
+        <h3>Data Minimization</h3>
+        <div class="setting-row">
+            <label for="active-scanning">Active Scanning:</label>
+            <input type="checkbox" id="active-scanning">
+        </div>
+        <p class="help-text">If disabled, the extension will NOT automatically scan pages you visit. You must click the extension icon to scan manually.</p>
+        
+        <div class="setting-row" style="margin-top: 15px;">
+            <label for="telemetry">Telemetry & Logging:</label>
+            <input type="checkbox" id="telemetry">
+        </div>
+        <p class="help-text">Allow the backend to anonymously store queried URLs to improve the detection model over time.</p>
+    </div>
+    
+    <button id="save-btn">Save Settings</button>
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+</body>
+</html>

@@ -42,6 +42,16 @@
 
       <div id="error-container" class="error-container hidden"></div>
       
+      <div id="feedback-container" class="feedback-container hidden" style="margin-top: 15px; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+          <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Was this prediction accurate?</p>
+          <div style="display: flex; justify-content: center; gap: 8px;">
+              <button id="btn-feedback-correct" class="btn" style="background: #e8f5e9; color: #2e7d32; font-size: 11px; padding: 4px 8px;">👍 Correct</button>
+              <button id="btn-feedback-fp" class="btn" style="background: #ffebee; color: #c62828; font-size: 11px; padding: 4px 8px;">👎 Safe (FP)</button>
+              <button id="btn-feedback-fn" class="btn" style="background: #ffebee; color: #c62828; font-size: 11px; padding: 4px 8px;">🚨 Malicious (FN)</button>
+          </div>
+          <p id="feedback-status" class="hidden" style="font-size: 11px; color: #2e7d32; margin-top: 5px;"></p>
+      </div>
+
       <button id="scan-btn" class="btn primary-btn">Scan Current Tab</button>
     </div>
   </div>

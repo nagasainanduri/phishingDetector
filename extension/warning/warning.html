@@ -61,6 +61,15 @@
                     <!-- Model Explanations injected here -->
                 </ul>
             </div>
+            
+            <div id="feedback-container" class="reasons-box" style="margin-top: 16px; background: rgba(0, 0, 0, 0.2); text-align: center;">
+                <h3 style="margin-bottom: 8px;">Was this warning accurate?</h3>
+                <div style="display: flex; justify-content: center; gap: 8px;">
+                    <button id="btn-feedback-correct" class="btn" style="background: #e8f5e9; color: #2e7d32; padding: 6px 12px; font-size: 12px; border: none; cursor: pointer; border-radius: 4px;">👍 Correct</button>
+                    <button id="btn-feedback-fp" class="btn" style="background: #ffebee; color: #c62828; padding: 6px 12px; font-size: 12px; border: none; cursor: pointer; border-radius: 4px;">👎 Safe (False Positive)</button>
+                </div>
+                <p id="feedback-status" class="hidden" style="font-size: 12px; color: #4caf50; margin-top: 8px;"></p>
+            </div>
         </div>
         
         <div class="actions">

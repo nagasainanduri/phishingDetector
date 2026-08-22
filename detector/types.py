@@ -20,6 +20,9 @@ class DetectionResult:
     future_threat_intel: List[Any] = field(default_factory=list)
     model_explanation: List[Dict[str, float]] = field(default_factory=list)
     explanation_limitation: Optional[str] = None
+    privacy_mode: str = "local_only"
+    telemetry: bool = False
+
 
 @dataclass
 class RiskAssessment:

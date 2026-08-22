@@ -60,6 +60,11 @@ def predict():
     data = request.form if request.form else request.json
     urls = data.get('urls') if isinstance(data.get('urls'), list) else [data.get('url')]
     page_signals = data.get('page_signals')
+    
+    # Extract privacy configurations
+    privacy_mode = data.get('privacy_mode', 'local_only')
+    telemetry = data.get('telemetry', False)
+    
     if not urls or not urls[0]:
         logger.warning("No URLs provided in request")
         return jsonify({'error': 'No URLs provided'}), 400
@@ -79,12 +84,11 @@ def predict():
 
             # Predict
             try:
-                result_dict = detector.analyze(url, page_signals=page_signals)
+                result_dict = detector.analyze(url, page_signals=page_signals, privacy_mode=privacy_mode)
                 results.append(result_dict)
                 
-                # If there's no error, we log it
-                if 'error' not in result_dict and result_dict.get('result') != 'Error':
-                    # Log to new_urls.csv
+                # Only log to CSV if telemetry is explicitly enabled (Data Minimization)
+                if telemetry and 'error' not in result_dict and result_dict.get('result') != 'Error':
                     new_urls.append({
                         'timestamp': datetime.now().isoformat(),
                         'url': url,
@@ -113,6 +117,45 @@ def predict():
     except Exception as e:
         logger.error(f"Error analyzing URLs: {str(e)}")
         return jsonify({'error': f'Error analyzing URLs: {str(e)}'}), 500
+
+import hashlib
+
+@app.route('/api/feedback', methods=['POST'])
+@limiter.limit("20 per minute")
+def submit_feedback():
+    data = request.json
+    if not data or not data.get('url'):
+        return jsonify({'error': 'Missing URL'}), 400
+        
+    url = data.get('url')
+    feedback_type = data.get('feedback_type')
+    share_raw_url = data.get('share_raw_url', False)
+    risk_score = data.get('risk_score', 0)
+    prediction = data.get('prediction', 'UNKNOWN')
+    
+    # Privacy mechanism: Hash the URL if the user declined sharing raw URL or if it's just 'correct'
+    if not share_raw_url or feedback_type == 'correct':
+        url_identifier = "HASHED:" + hashlib.sha256(url.encode()).hexdigest()
+    else:
+        url_identifier = url
+        
+    feedback_entry = {
+        'timestamp': datetime.now().isoformat(),
+        'url_identifier': url_identifier,
+        'feedback_type': feedback_type,
+        'risk_score': risk_score,
+        'prediction': prediction
+    }
+    
+    feedback_path = 'data/feedback.csv'
+    df = pd.DataFrame([feedback_entry])
+    if os.path.exists(feedback_path):
+        df.to_csv(feedback_path, mode='a', header=False, index=False)
+    else:
+        df.to_csv(feedback_path, mode='w', header=True, index=False)
+        
+    logger.info(f"Feedback logged: {feedback_type} for {url_identifier}")
+    return jsonify({'status': 'success'})
 
 @app.route('/api/predict', methods=['POST'])
 @limiter.limit("10 per second")

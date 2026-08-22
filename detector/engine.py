@@ -29,7 +29,7 @@ class PhishingDetector:
         self.brand_detector = BrandDetector()
         self.threat_intel = ThreatIntelAggregator()
         
-    def analyze(self, url: str, page_signals: dict = None) -> dict:
+    def analyze(self, url: str, page_signals: dict = None, privacy_mode: str = "local_only") -> dict:
         """
         Analyzes a URL and returns standard prediction output along with risk assessment.
         """
@@ -56,7 +56,7 @@ class PhishingDetector:
             
             # 1. External Checks
             brand_findings = self.brand_detector.analyze(url)
-            threat_intel_findings = self.threat_intel.analyze(url)
+            threat_intel_findings = self.threat_intel.analyze(url, privacy_mode=privacy_mode)
             
             # 2. Run Heuristics
             heuristic_findings = self.heuristic_engine.evaluate(
