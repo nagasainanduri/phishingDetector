@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "PhishGuarde",
+  "name": "PhishGuard",
   "version": "1.0",
   "description": "Privacy-first phishing detection with explainable risk analysis.",
   "icons": {
