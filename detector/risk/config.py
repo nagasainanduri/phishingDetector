@@ -11,7 +11,8 @@ HEURISTIC_PENALTIES = {
     Severity.CRITICAL: 40,
     Severity.HIGH: 25,
     Severity.MEDIUM: 10,
-    Severity.LOW: 5
+    Severity.LOW: 5,
+    Severity.SAFE: -50
 }
 
 # Final Severity and Action Thresholds based on Risk Score (0-100)

@@ -11,11 +11,13 @@ from cachetools import TTLCache
 import threading
 import warnings
 from detector import PhishingDetector
+from flask_cors import CORS
 
 # Suppress Flask-Limiter in-memory storage warning for dev
 warnings.filterwarnings("ignore", category=UserWarning, module="flask_limiter")
 
 app = Flask(__name__)
+CORS(app)
 
 # Create logs and data directories
 os.makedirs('logs', exist_ok=True)

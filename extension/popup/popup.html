@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PhishGuard</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glass-panel" id="main-panel">
+    <div class="header">
+      <h1>PhishGuard</h1>
+      <p class="subtitle">Risk Engine MVP</p>
+    </div>
+    
+    <div class="content">
+      <div id="url-display" class="truncate">Loading...</div>
+      
+      <div id="status-container" class="status-container hidden">
+        <div class="score-ring">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="circle" id="score-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <text x="18" y="20.35" class="percentage" id="score-text">0</text>
+          </svg>
+          <div class="score-label">Risk Score</div>
+        </div>
+        
+        <div class="severity-badge" id="severity-badge">UNKNOWN</div>
+      </div>
+      
+      <div id="reasons-container" class="reasons-container hidden">
+        <h3>Evidence Log</h3>
+        <ul id="reasons-list"></ul>
+      </div>
+
+      <div id="error-container" class="error-container hidden"></div>
+      
+      <button id="scan-btn" class="btn primary-btn">Scan Current Tab</button>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

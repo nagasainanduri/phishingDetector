@@ -3,6 +3,7 @@ from typing import List, Dict, Any
 from urllib.parse import urlparse
 
 class Severity(Enum):
+    SAFE = "SAFE"
     LOW = "LOW"
     MEDIUM = "MEDIUM"
     HIGH = "HIGH"

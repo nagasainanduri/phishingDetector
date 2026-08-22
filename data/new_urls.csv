@@ -1,0 +1,5 @@
+timestamp,url,result,confidence
+2026-08-22T13:12:56.180698,https://github.com/Amevrynx/phishingDetector,HIGH,0.7541
+2026-08-22T13:19:26.745901,https://github.com/Amevrynx/phishingDetector,LOW,0.6939
+2026-08-22T13:20:24.190032,https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983,CRITICAL,0.8251999999999999
+2026-08-22T13:20:48.666317,https://accounts.google.com/v3/signin/confirmidentifier?authuser=0&continue=https://mail.google.com/mail/u/0/&emr=1&followup=https://mail.google.com/mail/u/0/&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1814935111:1787385045196680,MEDIUM,0.9899

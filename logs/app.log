@@ -1,0 +1,26 @@
+2026-08-22 13:11:47,493 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 13:11:47,493 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 13:11:47,500 - INFO -  * Restarting with stat
+2026-08-22 13:11:49,223 - WARNING -  * Debugger is active!
+2026-08-22 13:11:49,228 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 13:12:56,194 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:12:56,195 - INFO - 127.0.0.1 - - [22/Aug/2026 13:12:56] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:13:04,330 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 13:13:04,330 - INFO - 127.0.0.1 - - [22/Aug/2026 13:13:04] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:13:05,354 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 13:13:05,354 - INFO - 127.0.0.1 - - [22/Aug/2026 13:13:05] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:13:06,160 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 13:13:06,161 - INFO - 127.0.0.1 - - [22/Aug/2026 13:13:06] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:19:14,877 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 13:19:14,878 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 13:19:14,879 - INFO -  * Restarting with stat
+2026-08-22 13:19:17,632 - WARNING -  * Debugger is active!
+2026-08-22 13:19:17,635 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 13:19:26,749 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:19:26,750 - INFO - 127.0.0.1 - - [22/Aug/2026 13:19:26] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:20:24,191 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:20:24,192 - INFO - 127.0.0.1 - - [22/Aug/2026 13:20:24] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:20:48,668 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:20:48,669 - INFO - 127.0.0.1 - - [22/Aug/2026 13:20:48] "POST /api/predict HTTP/1.1" 200 -

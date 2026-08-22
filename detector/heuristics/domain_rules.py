@@ -49,3 +49,21 @@ def check_typosquatting(url, parsed):
                 evidence={"popular_domain_found": d, "actual_domain": netloc}
             )
     return None
+
+TRUSTED_DOMAINS = {
+    'github.com', 'google.com', 'microsoft.com', 'apple.com', 'amazon.com',
+    'stackoverflow.com', 'linkedin.com', 'twitter.com', 'facebook.com', 'youtube.com'
+}
+
+def check_allowlist(url, parsed):
+    if not parsed.hostname:
+        return None
+    hostname = parsed.hostname.lower()
+    if any(hostname == domain or hostname.endswith('.' + domain) for domain in TRUSTED_DOMAINS):
+        return RuleMatch(
+            rule_id="DOM_005",
+            severity=Severity.SAFE,
+            description="Domain matches a highly trusted allowlist.",
+            evidence={"hostname": hostname}
+        )
+    return None

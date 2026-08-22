@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "PhishGuard Detection Engine",
+  "version": "1.0",
+  "description": "Scan URLs using the PhishGuard Risk Engine.",
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Scan this page"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

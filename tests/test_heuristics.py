@@ -48,7 +48,7 @@ class TestHeuristics(unittest.TestCase):
 
     def test_clean_url(self):
         matches = self.engine.evaluate('https://github.com/microsoft/vscode')
-        self.assertEqual(len(matches), 0)
+        self.assertTrue(any(m.rule_id == 'DOM_005' and m.severity == Severity.SAFE for m in matches))
 
     def test_edge_cases(self):
         # IP with explicit port
