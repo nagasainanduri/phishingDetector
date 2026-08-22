@@ -11,25 +11,76 @@ This repository contains the backend Flask API (`app.py`), the Chrome extension 
 
 ## 2. Architecture
 
-PhishGuard operates on a **Defense-in-Depth** architecture. 
-1. **Client (Browser Extension)**: Extracts DOM signals and the current URL. It queries the backend API.
-2. **API (Flask)**: Receives the URL. Enforces size limits, handles rate limiting, and validates inputs.
-3. **Detection Engine (`PhishingDetector`)**: Orchestrates the analysis:
-   - Evaluates fast-path heuristics.
-   - Evaluates the ML Model (Random Forest).
-   - Evaluates Brand Impersonation (Levenshtein distance).
-   - Queries external Threat Intelligence (PhishTank, VirusTotal).
-4. **Risk & Policy Engine**: Aggregates the findings into a normalized `0-100` risk score and applies a policy (`ALLOW`, `WARN`, `BLOCK`).
+PhishGuard operates on a strict **Defense-in-Depth** architecture that separates canonicalization, detection, and decision-making:
+
+```text
+                         PHISHGUARD
+                             |
+              +--------------+--------------+
+              |              |              |
+              v              v              v
+         Chrome Extension    API            CLI
+              |              |              |
+              +--------------+--------------+
+                             |
+                             v
+                    Input Validation
+                             |
+                             v
+                 URL Canonicalization
+                             |
+             +---------------+---------------+
+             |                               |
+             v                               v
+      Raw Representation            Canonical Representation
+             |                               |
+             +---------------+---------------+
+                             |
+                             v
+                     Feature Extraction
+                             |
+             +---------------+---------------+
+             |               |               |
+             v               v               v
+            ML          Heuristics       Page Analysis
+             |               |               |
+             +---------------+---------------+
+                             |
+                             v
+                    Brand Detection
+                             |
+                             v
+                  Threat Intelligence
+                             |
+                             v
+                    DetectionResult
+                             |
+                             v
+                       Risk Engine
+                             |
+                +------------+------------+
+                |                         |
+                v                         v
+           Risk Score                Confidence
+                |
+                v
+                     Policy Engine
+                             |
+                 +-----------+-----------+
+                 |           |           |
+                 v           v           v
+               ALLOW        WARN       BLOCK
+```
 
 ## 3. Features
 
 **Implemented Functionality:**
-- **Real-time URL Analysis**: Sub-second evaluation of URLs.
+- **Real-time URL Canonicalization**: Bounded recursive decoding, IDNA, and hexadecimal IP normalizations.
 - **Privacy Controls**: Supports "Local Only" modes to protect user browsing history from leaving the backend.
-- **Model Explainability (XAI)**: Uses SHAP to provide human-readable explanations of *why* an ML model flagged a URL.
+- **Model Explainability (XAI)**: Uses SHAP to provide human-readable explanations of which features contributed to an ML prediction.
 - **Brand Impersonation**: Fuzzy matching against top targeted brands.
 - **User Feedback Pipeline**: Endpoints to ingest user corrections (False Positives/Negatives).
-- **Hardened API**: Versioned (`v1`), size-limited, and optionally authenticated API.
+- **Hardened API**: Versioned (`v1`), configurable resource limits, and strict exception handling.
 
 **Experimental Functionality:**
 - **DOM Signal Processing**: The extension extracts page signals (forms, iframes) but the backend currently treats these as experimental features for future ML inclusion.
@@ -41,18 +92,19 @@ PhishGuard operates on a **Defense-in-Depth** architecture.
 ## 4. Detection Pipeline
 
 The pipeline runs synchronously for each URL:
-1. **URL Parsing**: Normalizes and extracts TLD, domains, and paths.
-2. **Feature Extraction**: Extracts 17 static features (e.g. length, `@` symbol, IP presence, excessive dots).
-3. **Heuristics & Brand Analysis**: Applies handcrafted rules and fuzzy-matches against known brands.
-4. **ML Inference**: Feeds the 17 features into the Random Forest model.
-5. **Threat Intel**: (If permitted by privacy settings) Queries external APIs.
-6. **Risk Aggregation**: Combines all signals into a final score (0-100).
+1. **Input Validation**: Rejects oversized payloads or URLs.
+2. **URL Canonicalization**: Safely unpacks hex IPs, unquotes percent encodings, and normalizes paths up to a bounded depth.
+3. **Feature Extraction**: Extracts 17 static features from the canonicalized URL.
+4. **Heuristics & Brand Analysis**: Applies handcrafted rules and fuzzy-matches against known brands.
+5. **ML Inference**: Feeds the 17 features into the Random Forest model to output an uncalibrated model probability.
+6. **Threat Intel**: (If permitted by privacy settings) Queries external APIs.
+7. **Risk & Policy Engine**: Aggregates the findings into a final risk score (0-100) and maps it to a policy action.
 
 ## 5. ML Models
 
 The system is currently configured to use a **Random Forest Classifier** trained on 17 extracted URL features. 
 - It relies solely on `scikit-learn` to minimize deployment footprint.
-- It is fully integrated with `shap` to extract feature attributions (e.g., "URL length contributed +15% to the phishing probability").
+- It is fully integrated with `shap` to extract feature attributions.
 
 ## 6. Model Benchmark Results
 
@@ -78,11 +130,9 @@ An adversarial framework (`scripts/evaluate_adversarial.py`) was built to test e
 | Hex-Encoded IPs | ✅ Detected |
 | Subdomain Abuse | ✅ Detected |
 | Brand Impersonation | ✅ Detected |
-| URL Encoding Evasion | ❌ False Negative |
+| URL Encoding Evasion | ❌ False Negative (Partially mitigated by new Canonicalization) |
 | Misleading Paths (`google.com/login/paypal`) | ❌ False Negative |
 | Open Redirects | ❌ False Negative |
-
-*(See `adversarial_evaluation_report.md` for full transparency).*
 
 ## 8. Chrome Extension Installation
 
@@ -120,17 +170,12 @@ python scripts/cli.py --file urls.txt
 
 PhishGuard defaults to **Privacy-Preserving (Local Only) Mode**.
 - **Local Only**: The API will *not* reach out to third-party APIs (VirusTotal/PhishTank) to prevent leaking browsing behavior.
-- **Telemetry**: Disabled by default. If enabled, only anonymized metrics (URL, score) are logged to `data/new_urls.csv`.
-- **Feedback**: When users submit feedback, they can choose to withhold the raw URL. The system will log a SHA-256 hash instead (`HASHED:abc123...`).
+- **Telemetry**: Disabled by default. If enabled, only anonymized metrics are logged.
+- **Feedback**: When users submit feedback, they can choose to withhold the raw URL. The system will log a SHA-256 hash instead.
 
 ## 12. Threat Intelligence Integrations
 
-PhishGuard optionally integrates with:
-- **PhishTank**
-- **VirusTotal**
-
-To enable them, set the environment variables:
-`PHISHTANK_API_KEY` and `VIRUSTOTAL_API_KEY`. 
+PhishGuard optionally integrates with **PhishTank** and **VirusTotal**. To enable them, set the environment variables: `PHISHTANK_API_KEY` and `VIRUSTOTAL_API_KEY`. 
 
 ## 13. Testing
 
@@ -142,23 +187,21 @@ pip install pytest flake8
 # Run all tests
 pytest tests/ -v
 ```
-Automated CI via GitHub Actions is implemented for linting and testing.
 
 ## 14. Screenshots/Demo
-*(To be added by maintainer: Place images in `docs/images/` and link here).*
+to be added
 
 ## 15. Limitations
 
 - **Model Stagnation**: The Random Forest model is trained on a static dataset. It will degrade over time without a continuous retraining pipeline.
-- **Deeply Encoded URLs**: As highlighted in the adversarial evaluation, the system currently lacks a robust URL canonicalization step, making it vulnerable to heavy URL encoding.
 - **Open Redirects**: Inherits the trust of the root domain, leading to False Negatives.
+- **Uncalibrated Probabilities**: The ML probability output is currently uncalibrated and should not be treated as an exact statistical probability of maliciousness.
 
 ## 16. Future Work
 
-1. Implement robust URL canonicalization (un-shortening, hex decoding) prior to feature extraction.
-2. Automate the feedback loop to retrain the ML model weekly based on validated user feedback.
-3. Expand the dataset to include a global scale of newly registered domains.
-4. Integrate DOM-based machine learning (e.g., computer vision on logos) to complement URL features.
+1. Automate the feedback loop to retrain the ML model weekly based on validated user feedback.
+2. Expand the dataset to include a global scale of newly registered domains.
+3. Integrate DOM-based machine learning (e.g., computer vision on logos) to complement URL features.
 
 ---
-**Disclaimer**: This tool provides a risk score and suspected phishing probability. It is not perfect and does not guarantee 100% protection against novel attacks.
+**Disclaimer**: This is a  security tool that provides a risk score and suspected phishing probability. It is not perfect and does not guarantee 100% protection against novel attacks.

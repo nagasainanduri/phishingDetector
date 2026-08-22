@@ -16,7 +16,7 @@ jobs:
     
     - name: Validate manifest.json format
       run: |
-        if ! jq e . extension/manifest.json > /dev/null; then
+        if ! jq -e . extension/manifest.json > /dev/null; then
           echo "Error: manifest.json contains syntax errors"
           exit 1
         fi

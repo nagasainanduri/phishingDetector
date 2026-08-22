@@ -10,10 +10,10 @@ class RiskEngine:
         evidence = []
         
         # 1. Base ML Score
-        base_score = int(detection.ml_probability * self.config.ML_WEIGHT)
+        base_score = int(detection.model_probability * self.config.ML_WEIGHT)
         
         calibrated_str = "Calibrated" if detection.is_calibrated_probability else "Not calibrated"
-        evidence.append(f"ML Model ({detection.ml_model_name}) raw probability: {detection.ml_probability:.2f} ({calibrated_str}) -> Base score: {base_score}")
+        evidence.append(f"ML Model ({detection.ml_model_name}) raw probability: {detection.model_probability:.2f} ({calibrated_str}) -> Base score: {base_score}")
 
         # 2. Add Heuristic Penalties
         heuristic_penalty = 0

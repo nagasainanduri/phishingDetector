@@ -10,10 +10,12 @@ class Action(Enum):
 
 @dataclass
 class DetectionResult:
-    url: str
-    ml_probability: float
+    raw_url: str
+    canonical_url: str
+    model_probability: float
     ml_model_name: str
     is_calibrated_probability: bool = False
+    canonicalization_findings: Dict[str, Any] = field(default_factory=dict)
     heuristic_findings: List[RuleMatch] = field(default_factory=list)
     future_page_findings: List[Any] = field(default_factory=list)
     future_brand_findings: List[Any] = field(default_factory=list)

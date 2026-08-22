@@ -55,7 +55,7 @@ def test_app_telemetry_disabled(client):
             "telemetry": False
         }
         
-        response = client.post('/api/predict', json=payload)
+        response = client.post('/api/v1/analyze', json=payload)
         assert response.status_code == 200
         
         # Verify no file was created or no row was appended
@@ -84,7 +84,7 @@ def test_app_telemetry_enabled(client):
             "telemetry": True
         }
         
-        response = client.post('/api/predict', json=payload)
+        response = client.post('/api/v1/analyze', json=payload)
         assert response.status_code == 200
         
         # Verify file was created

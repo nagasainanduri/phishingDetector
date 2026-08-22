@@ -14,6 +14,23 @@ def check_excessive_subdomains(url, parsed):
         )
     return None
 
+def check_tld(url, parsed):
+    if not parsed.hostname:
+        return None
+    parts = parsed.hostname.split('.')
+    if len(parts) >= 2:
+        tld = parts[-1].lower()
+        suspicious_tlds = {'xyz', 'tk', 'ml', 'click', 'cf', 'gq', 'ga'}
+        if tld in suspicious_tlds:
+            return RuleMatch(
+                rule_id="DOM_006",
+                severity=Severity.LOW,
+                description="TLD information is treated only as a weak contextual signal. No TLD is considered malicious solely because of its TLD.",
+                evidence={"tld": tld}
+            )
+    return None
+
+
 def check_punycode(url, parsed):
     if 'xn--' in parsed.netloc.lower():
         return RuleMatch(

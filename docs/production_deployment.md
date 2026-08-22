@@ -12,13 +12,19 @@ The PhishGuard backend is a production-oriented Flask application designed to se
    - The system is built privacy-first. 
    - Browsing history and telemetry are dropped by default unless explicitly enabled by the client and permitted by the operator.
 3. **Robustness**:
-   - The `PhishingDetector` wrapper is designed to catch internal exceptions to avoid returning 500 status codes for individual URL failures, ensuring partial completion of batched requests.
-   - The API is strictly limited to 1MB payloads to prevent memory exhaustion/DoS attacks.
+   - The detection layer handles expected input and processing errors gracefully. 
+   - Unexpected internal exceptions are logged and surfaced through appropriate 5xx responses rather than being silently converted into successful results.
+   - The API enforces strict limits on payload size, URL length, and batch processing to prevent memory exhaustion and DoS attacks.
 
 ## Environment Variables
 
 | Variable | Description | Required | Default |
 |----------|-------------|----------|---------|
+| `PHISHGUARD_MAX_REQUEST_BYTES` | Maximum accepted HTTP request body size. | No | `1048576` (1MB) |
+| `PHISHGUARD_MAX_URL_LENGTH` | Maximum accepted URL length. | No | `2048` |
+| `PHISHGUARD_MAX_BATCH_SIZE` | Maximum number of URLs allowed in a batch request. | No | `10` |
+| `PHISHGUARD_MAX_URLS_PER_REQUEST` | Maximum number of URLs accepted by a single API request. | No | `10` |
+| `PHISHGUARD_MAX_DECODE_DEPTH` | Maximum canonicalization/decoding depth. | No | `5` |
 | `PHISHTANK_API_KEY`  | For querying the PhishTank database. | No | None |
 | `VIRUSTOTAL_API_KEY` | For querying VirusTotal. | No | None |
 

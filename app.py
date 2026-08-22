@@ -20,8 +20,13 @@ warnings.filterwarnings("ignore", category=UserWarning, module="flask_limiter")
 app = Flask(__name__)
 CORS(app)
 
-# 1. Request Size Limits (1 MB)
-app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+# 1. Configurable Request Limits
+MAX_REQUEST_BYTES = int(os.environ.get('PHISHGUARD_MAX_REQUEST_BYTES', 1048576))
+MAX_URL_LENGTH = int(os.environ.get('PHISHGUARD_MAX_URL_LENGTH', 2048))
+MAX_BATCH_SIZE = int(os.environ.get('PHISHGUARD_MAX_BATCH_SIZE', 10))
+MAX_URLS_PER_REQUEST = int(os.environ.get('PHISHGUARD_MAX_URLS_PER_REQUEST', MAX_BATCH_SIZE))
+
+app.config['MAX_CONTENT_LENGTH'] = MAX_REQUEST_BYTES
 
 # Create logs and data directories
 os.makedirs('logs', exist_ok=True)
@@ -70,7 +75,7 @@ def not_found(e):
 
 @app.errorhandler(413)
 def request_entity_too_large(e):
-    return make_error_response(413, "Payload too large. Maximum size is 1MB.")
+    return make_error_response(413, f"Payload too large. Maximum size is {MAX_REQUEST_BYTES} bytes.")
 
 @app.errorhandler(429)
 def ratelimit_handler(e):
@@ -113,60 +118,54 @@ def analyze_url():
         return make_error_response(400, "No URLs provided")
         
     # Input Validation
+    if len(urls) > MAX_URLS_PER_REQUEST:
+        return make_error_response(400, f"Too many URLs. Maximum batch size is {MAX_URLS_PER_REQUEST}.")
+        
     for url in urls:
         if not isinstance(url, str):
             return make_error_response(400, "URLs must be strings")
-        if len(url) > 2048:
-            return make_error_response(400, "URL exceeds maximum length of 2048 characters")
+        if len(url) > MAX_URL_LENGTH:
+            return make_error_response(400, f"URL exceeds maximum length of {MAX_URL_LENGTH} characters")
 
     results = []
     new_urls = []
 
-    try:
-        for url in urls:
-            url = url.strip()
-            # Check cache
-            with cache_lock:
-                if url in cache:
-                    logger.info(f"Cache hit for URL: {url}")
-                    results.append(cache[url])
-                    continue
+    for url in urls:
+        url = url.strip()
+        # Check cache
+        with cache_lock:
+            if url in cache:
+                logger.info(f"Cache hit for URL: {url}")
+                results.append(cache[url])
+                continue
 
-            # Predict
-            try:
-                result_dict = detector.analyze(url, page_signals=page_signals, privacy_mode=privacy_mode)
-                results.append(result_dict)
-                
-                # Only log to CSV if telemetry is explicitly enabled
-                if telemetry and 'error' not in result_dict and result_dict.get('result') != 'Error':
-                    new_urls.append({
-                        'timestamp': datetime.now().isoformat(),
-                        'url': url,
-                        'result': result_dict['result'],
-                        'confidence': result_dict['confidence'] / 100.0
-                    })
+        # Predict
+        # Unexpected internal exceptions will NOT be caught here, allowing them to 500 appropriately.
+        result_dict = detector.analyze(url, page_signals=page_signals, privacy_mode=privacy_mode)
+        results.append(result_dict)
+        
+        # Only log to CSV if telemetry is explicitly enabled
+        if telemetry and 'error' not in result_dict and result_dict.get('result') != 'Error':
+            new_urls.append({
+                'timestamp': datetime.now().isoformat(),
+                'url': url,
+                'result': result_dict['result'],
+                'confidence': result_dict['confidence'] / 100.0
+            })
 
-                # Cache result
-                with cache_lock:
-                    cache[url] = result_dict
-            except Exception as e:
-                logger.error(f"Error processing URL {url}: {str(e)}")
-                # Do not crash the API, return a structured error for this item
-                results.append({'url': url, 'error': f'Unable to verify this URL: {str(e)}'})
+        # Cache result
+        with cache_lock:
+            cache[url] = result_dict
 
-        # Save to new_urls.csv
-        if new_urls:
-            new_urls_df = pd.DataFrame(new_urls)
-            if os.path.exists(NEW_URLS_PATH):
-                new_urls_df.to_csv(NEW_URLS_PATH, mode='a', header=False, index=False)
-            else:
-                new_urls_df.to_csv(NEW_URLS_PATH, mode='w', header=True, index=False)
+    # Save to new_urls.csv
+    if new_urls:
+        new_urls_df = pd.DataFrame(new_urls)
+        if os.path.exists(NEW_URLS_PATH):
+            new_urls_df.to_csv(NEW_URLS_PATH, mode='a', header=False, index=False)
+        else:
+            new_urls_df.to_csv(NEW_URLS_PATH, mode='w', header=True, index=False)
 
-        return jsonify(results)
-
-    except Exception as e:
-        logger.error(f"Error analyzing URLs: {str(e)}")
-        return make_error_response(500, "Internal server error during analysis")
+    return jsonify(results)
 
 @app.route('/api/v1/feedback', methods=['POST'])
 @limiter.limit("20 per minute")

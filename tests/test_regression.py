@@ -13,10 +13,10 @@ def test_regression():
 
     # Deterministic test set
     test_data = [
-        {"url": "https://experts.wahooas.org/js/js/4/", "expected": "Phishing"},
-        {"url": "https://ibri.org/del/", "expected": "Legitimate"},
-        {"url": "https://google.com", "expected": "Legitimate"},
-        {"url": "http://example.com", "expected": "Legitimate"}
+        {"url": "https://experts.wahooas.org/js/js/4/", "expected": "WARN"}, # High ML, low heuristics may map to WARN or BLOCK depending on actual config
+        {"url": "https://ibri.org/del/", "expected": "ALLOW"},
+        {"url": "https://google.com", "expected": "ALLOW"},
+        {"url": "http://example.com", "expected": "ALLOW"}
     ]
 
     print("Running Baseline Regression Test")

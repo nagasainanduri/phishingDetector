@@ -14,8 +14,9 @@ class TestRiskEngine(unittest.TestCase):
 
     def test_normal_url(self):
         result = DetectionResult(
-            url="http://google.com",
-            ml_probability=0.05,
+            raw_url="http://google.com",
+            canonical_url="http://google.com",
+            model_probability=0.05,
             ml_model_name="cnn"
         )
         assessment = self.engine.evaluate(result)
@@ -25,8 +26,9 @@ class TestRiskEngine(unittest.TestCase):
 
     def test_suspicious_url(self):
         result = DetectionResult(
-            url="http://192.168.1.1",
-            ml_probability=0.95,
+            raw_url="http://192.168.1.1",
+            canonical_url="http://192.168.1.1",
+            model_probability=0.95,
             ml_model_name="cnn",
             heuristic_findings=[
                 RuleMatch("URL_001", Severity.HIGH, "IP Address", None)
@@ -40,8 +42,9 @@ class TestRiskEngine(unittest.TestCase):
     def test_conflicting_signals(self):
         # ML misses it, but high heuristics catch it
         result = DetectionResult(
-            url="http://paypal.com@attacker.com",
-            ml_probability=0.10, # ML says 10%
+            raw_url="http://paypal.com@attacker.com",
+            canonical_url="http://attacker.com",
+            model_probability=0.10, # ML says 10%
             ml_model_name="cnn",
             heuristic_findings=[
                 RuleMatch("URL_003", Severity.HIGH, "Credentials", None), # +25
@@ -57,8 +60,9 @@ class TestRiskEngine(unittest.TestCase):
     def test_missing_signals(self):
         # Only ML, no heuristics run
         result = DetectionResult(
-            url="http://phishing.com",
-            ml_probability=0.80,
+            raw_url="http://phishing.com",
+            canonical_url="http://phishing.com",
+            model_probability=0.80,
             ml_model_name="cnn",
             heuristic_findings=[]
         )
