@@ -9,6 +9,26 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
 });
 
+// Auto-scan on load for the Policy Engine and browser warning system
+window.addEventListener('load', () => {
+    // Do not auto-scan if we intentionally bypassed the warning
+    if (window.location.search.includes('phishguard_bypass=1')) {
+        return;
+    }
+    
+    // Don't auto scan extension pages or localhost (for development safety)
+    if (window.location.protocol === 'chrome-extension:' || window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+        return;
+    }
+
+    const signals = extractStructuralSignals();
+    chrome.runtime.sendMessage({
+        action: "active_scan",
+        url: window.location.href,
+        dom_signals: signals
+    });
+});
+
 function extractStructuralSignals() {
     const signals = {
         has_password_field: false,

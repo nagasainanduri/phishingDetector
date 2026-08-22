@@ -6,6 +6,7 @@ from .heuristics import create_engine as create_heuristic_engine
 from .risk.engine import RiskEngine
 from .brand.detector import BrandDetector
 from .threat_intel.aggregator import ThreatIntelAggregator
+from .policy.engine import PolicyEngine
 from .types import DetectionResult
 from urllib.parse import urlparse
 import re
@@ -24,6 +25,7 @@ class PhishingDetector:
         self.predictor = PhishingPredictor()
         self.heuristic_engine = create_heuristic_engine()
         self.risk_engine = RiskEngine()
+        self.policy_engine = PolicyEngine()
         self.brand_detector = BrandDetector()
         self.threat_intel = ThreatIntelAggregator()
         
@@ -75,8 +77,11 @@ class PhishingDetector:
                 future_threat_intel=threat_intel_findings
             )
             
-            # 3. Evaluate Risk
+            # 4. Evaluate Risk
             risk = self.risk_engine.evaluate(detection)
+            
+            # 5. Evaluate Policy
+            action = self.policy_engine.evaluate(risk, detection)
             
             return {
                 'url': url,
@@ -84,7 +89,7 @@ class PhishingDetector:
                 'confidence': round(pred_res['confidence'] * 100, 2),
                 'risk_score': risk.risk_score,
                 'severity': risk.severity.value,
-                'recommended_action': risk.recommended_action.value,
+                'action': action.value,
                 'reasons': risk.evidence_summary
             }
 

@@ -99,3 +99,25 @@
 2026-08-22 14:06:15,520 - INFO -  * Debugger PIN: 677-211-923
 2026-08-22 14:06:19,128 - INFO -  * Detected change in 'c:\\Users\\Avinash\\Documents\\projects\\phishingDetector\\detector\\heuristics\\domain_rules.py', reloading
 2026-08-22 14:06:19,628 - INFO -  * Restarting with stat
+2026-08-22 14:33:20,155 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 14:33:20,156 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 14:33:20,157 - INFO -  * Restarting with stat
+2026-08-22 14:33:21,967 - WARNING -  * Debugger is active!
+2026-08-22 14:33:21,972 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 14:33:32,704 - ERROR - Error analyzing URL https://github.com/Amevrynx/phishingDetector: 'raw_probability'
+2026-08-22 14:33:32,705 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:32] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:41,584 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:41,585 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:41] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:42,312 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:42,313 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:42] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:42,694 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:42,695 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:42] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:42,856 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:42,857 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:42] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:47,064 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:47,065 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:47] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:47,782 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 14:33:47,783 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:47] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:33:51,670 - ERROR - Error analyzing URL https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983: 'raw_probability'
+2026-08-22 14:33:51,671 - INFO - 127.0.0.1 - - [22/Aug/2026 14:33:51] "POST /api/predict HTTP/1.1" 200 -

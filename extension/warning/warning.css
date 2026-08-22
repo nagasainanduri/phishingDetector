@@ -1,0 +1,190 @@
+:root {
+    --bg-red: #d32f2f;
+    --text-white: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --btn-primary-bg: #ffffff;
+    --btn-primary-text: #d32f2f;
+    --btn-ghost-text: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-red);
+    color: var(--text-white);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.warning-container {
+    max-width: 800px;
+    padding: 40px;
+    width: 100%;
+}
+
+.icon-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alert-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 700px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 40px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 12px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.badge {
+    background: rgba(0,0,0,0.2);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Score Ring */
+.score-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.score-ring {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
+}
+.circle-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.2);
+    stroke-width: 3.8;
+}
+.circle {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 1s ease-out;
+}
+.percentage {
+    fill: #fff;
+    font-family: sans-serif;
+    font-size: 10px;
+    text-anchor: middle;
+    font-weight: bold;
+}
+
+.score-label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sub-label {
+    font-size: 14px;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+.reasons-box {
+    background: rgba(0,0,0,0.15);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.reasons-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.reasons-box ul {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+}
+
+.btn-primary:hover {
+    background: #f0f0f0;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--btn-ghost-text);
+    border: 1px solid var(--btn-ghost-text);
+}
+
+.btn-ghost:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-color: #fff;
+}
