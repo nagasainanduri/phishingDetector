@@ -220,3 +220,65 @@
 2026-08-22 17:04:38,307 - INFO - 127.0.0.1 - - [22/Aug/2026 17:04:38] "POST /api/v1/analyze HTTP/1.1" 200 -
 2026-08-22 17:08:29,352 - INFO - Cache hit for URL: https://www.mictech.edu.in/
 2026-08-22 17:08:29,353 - INFO - 127.0.0.1 - - [22/Aug/2026 17:08:29] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:24:04,226 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 17:24:04,239 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 17:24:04,239 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 17:24:04,240 - INFO -  * Restarting with stat
+2026-08-22 17:24:06,691 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 17:24:06,699 - WARNING -  * Debugger is active!
+2026-08-22 17:24:06,704 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 17:24:18,374 - INFO - 127.0.0.1 - - [22/Aug/2026 17:24:18] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:24:43,058 - INFO - 127.0.0.1 - - [22/Aug/2026 17:24:43] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:24:51,383 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard?tab=readme-ov-file
+2026-08-22 17:24:51,384 - INFO - 127.0.0.1 - - [22/Aug/2026 17:24:51] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:02,667 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard?tab=readme-ov-file
+2026-08-22 17:25:02,667 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:02] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:05,081 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:05] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:08,240 - INFO - Cache hit for URL: https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983
+2026-08-22 17:25:08,240 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:08] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:33,005 - INFO - Feedback logged: false_positive for https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983
+2026-08-22 17:25:33,006 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:33] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:25:39,508 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 17:25:39,520 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 17:25:39,520 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 17:25:39,521 - INFO -  * Restarting with stat
+2026-08-22 17:25:42,054 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 17:25:42,062 - WARNING -  * Debugger is active!
+2026-08-22 17:25:42,065 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 17:25:54,131 - INFO - Cache hit for URL: https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983
+2026-08-22 17:25:54,131 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:54] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:56,158 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard?tab=readme-ov-file
+2026-08-22 17:25:56,159 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:56] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:25:59,684 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard?tab=readme-ov-file
+2026-08-22 17:25:59,685 - INFO - 127.0.0.1 - - [22/Aug/2026 17:25:59] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:26:03,743 - INFO - Feedback logged: false_positive for https://github.com/Amevrynx/phishGuard?tab=readme-ov-file
+2026-08-22 17:26:03,744 - INFO - 127.0.0.1 - - [22/Aug/2026 17:26:03] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:28:56,973 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 17:28:56,974 - INFO - 127.0.0.1 - - [22/Aug/2026 17:28:56] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:29:03,567 - INFO - Feedback logged: false_positive for https://www.mictech.edu.in/
+2026-08-22 17:29:03,567 - INFO - 127.0.0.1 - - [22/Aug/2026 17:29:03] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:29:06,854 - INFO - 127.0.0.1 - - [22/Aug/2026 17:29:06] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:30:29,875 - INFO - 127.0.0.1 - - [22/Aug/2026 17:30:29] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:30:38,998 - INFO - Feedback logged: false_positive for https://github.com/Amevrynx/phishGuard/commits/main/
+2026-08-22 17:30:38,999 - INFO - 127.0.0.1 - - [22/Aug/2026 17:30:38] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:30:45,764 - INFO - Cache hit for URL: https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983
+2026-08-22 17:30:45,765 - INFO - 127.0.0.1 - - [22/Aug/2026 17:30:45] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:30:49,877 - INFO - Feedback logged: false_positive for HASHED:ce77a723818bcb05444be231cb8f410304a5b110589e61990aa8d867b99e9860
+2026-08-22 17:30:49,878 - INFO - 127.0.0.1 - - [22/Aug/2026 17:30:49] "POST /api/v1/feedback HTTP/1.1" 200 -
+2026-08-22 17:31:40,759 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishGuard/commits/main/
+2026-08-22 17:31:40,760 - INFO - 127.0.0.1 - - [22/Aug/2026 17:31:40] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:31:54,464 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 17:31:54,465 - INFO - 127.0.0.1 - - [22/Aug/2026 17:31:54] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:32:42,318 - INFO - Cache hit for URL: https://www.google.com/
+2026-08-22 17:32:42,319 - INFO - 127.0.0.1 - - [22/Aug/2026 17:32:42] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:32:48,925 - INFO - Cache hit for URL: https://www.google.com/
+2026-08-22 17:32:48,926 - INFO - 127.0.0.1 - - [22/Aug/2026 17:32:48] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:32:55,906 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 17:32:55,907 - INFO - 127.0.0.1 - - [22/Aug/2026 17:32:55] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:34:19,800 - INFO - 127.0.0.1 - - [22/Aug/2026 17:34:19] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:34:25,707 - INFO - 127.0.0.1 - - [22/Aug/2026 17:34:25] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:34:57,017 - INFO - 127.0.0.1 - - [22/Aug/2026 17:34:57] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:35:10,569 - INFO - 127.0.0.1 - - [22/Aug/2026 17:35:10] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 17:39:42,977 - INFO - 127.0.0.1 - - [22/Aug/2026 17:39:42] "POST /api/v1/analyze HTTP/1.1" 200 -

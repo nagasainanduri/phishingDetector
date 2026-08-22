@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <title>PhishGuard</title>
   <link rel="stylesheet" href="popup.css">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="glass-panel" id="main-panel">
@@ -71,7 +73,20 @@
 
       <button id="scan-btn" class="btn primary-btn">Scan Current Tab</button>
     </div>
-  </div>
-  <script src="popup.js"></script>
+    </div>
+
+    <!-- Custom Confirm Modal -->
+    <div id="custom-confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Share URL for Dataset?</h3>
+            <p>To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click No, we will only log an anonymized hash for statistical tracking).</p>
+            <div class="modal-actions">
+                <button id="modal-btn-yes" class="feedback-btn fp" style="width: 100%; justify-content: center; margin-bottom: 5px;">Yes, Share URL</button>
+                <button id="modal-btn-no" class="feedback-btn" style="width: 100%; justify-content: center;">No, Keep Private</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
 </body>
 </html>

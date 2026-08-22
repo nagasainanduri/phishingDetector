@@ -1,11 +1,12 @@
 :root {
-    --bg-color: #ffffff;
-    --glass-bg: rgba(0, 0, 0, 0.02);
-    --glass-border: rgba(0, 0, 0, 0.15);
-    --text-primary: #111111;
-    --text-secondary: #555555;
-    --accent: #8a0303;
-    --accent-text: #ffffff;
+    --bg-color: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent: #ffffff;
+    --warning-red: #ff3333; /* For specific warning highlights */
+    --accent-text: #000000;
     --success: #00e676;
     --warning: #ff9800;
 }
@@ -17,14 +18,14 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Unica One', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle at top, #ffffff, #f0f0f0);
+    background: #000000;
 }
 
 .warning-container {
@@ -43,7 +44,7 @@ body {
     width: 48px;
     height: 48px;
     margin-right: 16px;
-    color: var(--accent);
+    color: var(--warning-red);
 }
 
 h1 {
@@ -90,9 +91,9 @@ h1 {
 }
 
 .badge {
-    background: rgba(138, 3, 3, 0.1);
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    background: rgba(255, 51, 51, 0.1);
+    border: 1px solid var(--warning-red);
+    color: var(--warning-red);
     padding: 8px 16px;
     border-radius: 0;
     font-weight: 700;
@@ -107,7 +108,7 @@ h1 {
     align-items: center;
     margin-bottom: 30px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
 }
 
@@ -126,21 +127,21 @@ h1 {
 
 .circle-bg {
     fill: none;
-    stroke: rgba(138, 3, 3, 0.1);
+    stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 3;
 }
 
 .circle {
     fill: none;
-    stroke: var(--accent);
+    stroke: var(--warning-red);
     stroke-width: 3.5;
     stroke-linecap: square;
     transition: stroke-dasharray 1s ease-out;
 }
 
 .percentage {
-    fill: var(--accent);
-    font-family: sans-serif;
+    fill: var(--warning-red);
+    font-family: 'Unica One', sans-serif;
     font-size: 10px;
     text-anchor: middle;
     font-weight: bold;
@@ -163,7 +164,7 @@ h1 {
 }
 
 .reasons-box {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     padding: 20px;
     margin-bottom: 15px;
@@ -255,20 +256,49 @@ h1 {
     background: rgba(138, 3, 3, 0.05);
 }
 
-.feedback-btn.correct {
-    border-color: var(--success);
-    color: var(--success);
-}
+.feedback-btn.correct { border-color: var(--success); color: var(--success); }
+.feedback-btn.correct:hover { background: rgba(0, 230, 118, 0.05); }
 
-.feedback-btn.correct:hover {
-    background: rgba(0, 230, 118, 0.05);
-}
+.feedback-btn.fp { border-color: var(--warning); color: var(--warning); }
+.feedback-btn.fp:hover { background: rgba(255, 152, 0, 0.05); }
 
-.feedback-btn.fp {
-    border-color: var(--warning);
-    color: var(--warning);
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
-
-.feedback-btn.fp:hover {
-    background: rgba(255, 152, 0, 0.05);
+.modal-content {
+    background: var(--bg-color);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.modal-content h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    color: var(--text-primary);
+}
+.modal-content p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+.modal-actions {
+    display: flex;
+    flex-direction: column;
 }

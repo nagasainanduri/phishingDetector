@@ -190,10 +190,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         const btnFP = document.getElementById('btn-feedback-fp');
         const btnFN = document.getElementById('btn-feedback-fn');
         
-        const submitFeedback = (feedbackType) => {
+        // Custom Confirm Modal Logic
+        const showCustomConfirm = () => {
+            return new Promise((resolve) => {
+                const modal = document.getElementById('custom-confirm-modal');
+                const btnYes = document.getElementById('modal-btn-yes');
+                const btnNo = document.getElementById('modal-btn-no');
+                
+                modal.classList.remove('hidden');
+                
+                const cleanup = () => {
+                    modal.classList.add('hidden');
+                    btnYes.removeEventListener('click', onYes);
+                    btnNo.removeEventListener('click', onNo);
+                };
+                
+                const onYes = () => { cleanup(); resolve(true); };
+                const onNo = () => { cleanup(); resolve(false); };
+                
+                btnYes.addEventListener('click', onYes);
+                btnNo.addEventListener('click', onNo);
+            });
+        };
+
+        const submitFeedback = async (feedbackType) => {
             let shareRawUrl = false;
             if (feedbackType === 'false_positive' || feedbackType === 'false_negative') {
-                shareRawUrl = confirm("To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click Cancel, we will only log an anonymized hash for statistical tracking).");
+                shareRawUrl = await showCustomConfirm();
             }
             
             chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {

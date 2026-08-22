@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   width: 320px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Unica One', sans-serif;
   background: var(--bg-dark);
   color: var(--text-primary);
   display: flex;
@@ -105,7 +105,7 @@ body {
   padding: 12px;
   border: 1px solid var(--glass-border);
   border-radius: 0;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Unica One', sans-serif;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -155,7 +155,7 @@ body {
 }
 .percentage {
   fill: white;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Unica One', sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-anchor: middle;
@@ -269,8 +269,51 @@ body {
 .feedback-btn.correct { border-color: var(--sev-low); color: var(--sev-low); }
 .feedback-btn.correct:hover { background: rgba(0, 230, 118, 0.1); }
 
-.feedback-btn.fp { border-color: var(--sev-medium); color: var(--sev-medium); }
-.feedback-btn.fp:hover { background: rgba(255, 152, 0, 0.1); }
+.feedback-btn.fp { border-color: var(--warning); 
+  color: var(--warning); 
+}
+.feedback-btn.fp:hover { 
+  background: rgba(255, 152, 0, 0.05); 
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.modal-content {
+  background: var(--bg-dark);
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+}
+.modal-content h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+  color: var(--text-primary);
+}
+.modal-content p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+}
 
 .feedback-btn.fn { border-color: var(--sev-critical); color: var(--sev-critical); }
 .feedback-btn.fn:hover { background: rgba(255, 0, 0, 0.1); }

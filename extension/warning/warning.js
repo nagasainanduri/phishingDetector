@@ -103,10 +103,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCorrect = document.getElementById('btn-feedback-correct');
     const btnFP = document.getElementById('btn-feedback-fp');
 
-    const submitFeedback = (feedbackType) => {
+    // Custom Confirm Modal Logic
+    const showCustomConfirm = () => {
+        return new Promise((resolve) => {
+            const modal = document.getElementById('custom-confirm-modal');
+            const btnYes = document.getElementById('modal-btn-yes');
+            const btnNo = document.getElementById('modal-btn-no');
+            
+            modal.classList.remove('hidden');
+            
+            const cleanup = () => {
+                modal.classList.add('hidden');
+                btnYes.removeEventListener('click', onYes);
+                btnNo.removeEventListener('click', onNo);
+            };
+            
+            const onYes = () => { cleanup(); resolve(true); };
+            const onNo = () => { cleanup(); resolve(false); };
+            
+            btnYes.addEventListener('click', onYes);
+            btnNo.addEventListener('click', onNo);
+        });
+    };
+
+    const submitFeedback = async (feedbackType) => {
         let shareRawUrl = false;
         if (feedbackType === 'false_positive') {
-            shareRawUrl = confirm("To help improve PhishGuard, would you like to share the raw URL for our dataset? (If you click Cancel, we will only log an anonymized hash for statistical tracking).");
+            shareRawUrl = await showCustomConfirm();
         }
 
         chrome.storage.sync.get({ backend_url: 'http://127.0.0.1:5000' }, (settings) => {
@@ -127,8 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const status = document.getElementById('feedback-status');
                 status.textContent = 'Feedback submitted! Thank you.';
                 status.classList.remove('hidden');
-                btnCorrect.disabled = true;
-                btnFP.disabled = true;
+                if (btnCorrect) btnCorrect.disabled = true;
+                if (btnFP) btnFP.disabled = true;
             }).catch(e => console.error("Feedback error", e));
         });
     };
