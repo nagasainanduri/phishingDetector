@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "PhishGuard Detection Engine",
+  "name": "PhishGuarde",
   "version": "1.0",
-  "description": "Scan URLs using the PhishGuard Risk Engine.",
+  "description": "Privacy-first phishing detection with explainable risk analysis.",
   "icons": {
     "16": "assets/logo.png",
     "48": "assets/logo.png",
@@ -27,8 +27,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_end"
     }
   ],

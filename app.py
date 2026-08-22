@@ -40,7 +40,7 @@ limiter = Limiter(
 )
 
 # Cache for predictions (TTL: 1 hour)
-cache = TTLCache(maxsize=1000, ttl=3600)
+cache = TTLCache(maxsize=500, ttl=3600)
 cache_lock = threading.Lock()
 
 # Structured logging

@@ -310,3 +310,8 @@
 2026-08-22 18:16:12,670 - INFO - Feedback logged: correct for HASHED:4ecdbdf5828e6836e9d7ebd1d4365eca59be58e82f6ce4df6b2f9805ac4b9add
 2026-08-22 18:16:12,671 - INFO - 127.0.0.1 - - [22/Aug/2026 18:16:12] "POST /api/v1/feedback HTTP/1.1" 200 -
 2026-08-22 18:16:28,245 - INFO - 127.0.0.1 - - [22/Aug/2026 18:16:28] "POST /api/v1/analyze HTTP/1.1" 200 -
+2026-08-22 19:04:19,091 - INFO -  * Detected change in 'c:\\Users\\Avinash\\Documents\\projects\\phishingDetector\\gunicorn.conf.py', reloading
+2026-08-22 19:04:20,505 - INFO -  * Restarting with stat
+2026-08-22 19:04:25,114 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 19:04:25,138 - WARNING -  * Debugger is active!
+2026-08-22 19:04:25,141 - INFO -  * Debugger PIN: 677-211-923
