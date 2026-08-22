@@ -113,6 +113,10 @@ class DataLoader:
         urls = merged['url']
         X = merged.drop(columns=['url', 'label'])
         
+        # Encode categorical TLD feature for ML models
+        if 'tld' in X.columns:
+            X['tld'] = pd.factorize(X['tld'])[0]
+
         return X, y, urls
 
 class DatasetSplitter:

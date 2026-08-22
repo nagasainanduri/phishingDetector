@@ -58,6 +58,12 @@ def run():
                 'model': trainer.model_name,
                 'metrics': metrics
             }
+            
+            if hasattr(trainer.model, 'feature_importances_'):
+                importances = dict(zip(X_train.columns, trainer.model.feature_importances_))
+                importances = {k: float(v) for k, v in sorted(importances.items(), key=lambda item: item[1], reverse=True)}
+                reports[trainer.model_name]['feature_importances'] = importances
+
             logger.info(json.dumps(metrics['evaluation'], indent=4))
         except Exception as e:
             logger.error(f"Failed to benchmark {trainer.model_name}: {e}")

@@ -1,109 +1,193 @@
 {
     "rf_baseline": {
-        "timestamp": "2026-08-22T11:58:46.363533",
+        "timestamp": "2026-08-22T12:41:36.180358",
         "model": "rf_baseline",
         "metrics": {
             "training_resources": {
-                "time_seconds": 0.8328897953033447,
-                "peak_memory_mb": 33.30730438232422,
-                "process_memory_mb": 473.109375
+                "time_seconds": 0.8734328746795654,
+                "peak_memory_mb": 34.81282711029053,
+                "process_memory_mb": 476.1015625
             },
             "inference_resources": {
-                "time_seconds": 0.04381561279296875,
-                "peak_memory_mb": 3.4582929611206055,
-                "process_memory_mb": 474.0546875,
-                "latency_per_sample_ms": 0.006222041010077926
+                "time_seconds": 0.058828115463256836,
+                "peak_memory_mb": 3.938145637512207,
+                "process_memory_mb": 478.65625,
+                "latency_per_sample_ms": 0.008353893135935365
             },
             "evaluation": {
-                "accuracy": 0.9098267537631355,
-                "precision": 0.8933669185558354,
-                "recall": 0.926291352292513,
-                "f1": 0.9095312722610058,
-                "roc_auc": 0.9692197253413058,
-                "pr_auc": 0.9653155435197788,
-                "fpr": 0.10595105672969966,
-                "fnr": 0.07370864770748695
+                "accuracy": 0.9103947742118716,
+                "precision": 0.8798920377867746,
+                "recall": 0.9460243760882182,
+                "f1": 0.9117605929240665,
+                "roc_auc": 0.9766021380562784,
+                "pr_auc": 0.9748713629513832,
+                "fpr": 0.12374860956618465,
+                "fnr": 0.053975623911781775
             }
+        },
+        "feature_importances": {
+            "path_length": 0.2267481332569627,
+            "num_slashes": 0.1913007031942606,
+            "url_depth": 0.1394212763315702,
+            "url_length": 0.09103293396359222,
+            "dns_record": 0.08420219757274144,
+            "tld": 0.03872697995058281,
+            "special_char_ratio": 0.03647709365439668,
+            "domain_entropy": 0.030990361414900868,
+            "tld_length": 0.026709742031705983,
+            "domain_length": 0.02661113727040122,
+            "domain_digit_ratio": 0.023501681585021687,
+            "query_length": 0.020163351687168346,
+            "num_dots": 0.013331468001559437,
+            "has_query": 0.01133823059272267,
+            "subdomain_depth": 0.010779122941036943,
+            "num_parameters": 0.010597276179563837,
+            "has_subdomain": 0.008965765851633202,
+            "num_hyphens_domain": 0.0027642577205822683,
+            "has_dash": 0.0021660267048242148,
+            "has_ip": 0.0019518138933081214,
+            "has_encoding": 0.001562285430800972,
+            "has_at": 0.000549808076886082,
+            "has_punycode": 5.951134769138424e-05,
+            "https": 2.5792040549248786e-05,
+            "fragment_length": 2.304930553691315e-05,
+            "has_explicit_port": 0.0
         }
     },
     "xgboost": {
-        "timestamp": "2026-08-22T11:58:47.243787",
+        "timestamp": "2026-08-22T12:41:36.910078",
         "model": "xgboost",
         "metrics": {
             "training_resources": {
-                "time_seconds": 0.8096997737884521,
-                "peak_memory_mb": 0.5916624069213867,
-                "process_memory_mb": 644.078125
+                "time_seconds": 0.6060070991516113,
+                "peak_memory_mb": 2.6996116638183594,
+                "process_memory_mb": 636.94921875
             },
             "inference_resources": {
-                "time_seconds": 0.040824174880981445,
-                "peak_memory_mb": 0.40740966796875,
-                "process_memory_mb": 644.9609375,
-                "latency_per_sample_ms": 0.005797241533794582
+                "time_seconds": 0.032442569732666016,
+                "peak_memory_mb": 0.9270105361938477,
+                "process_memory_mb": 638.55078125,
+                "latency_per_sample_ms": 0.004607010754425734
             },
             "evaluation": {
-                "accuracy": 0.9088327179778471,
-                "precision": 0.8900946021146355,
-                "recall": 0.928322692977365,
-                "f1": 0.9088068181818182,
-                "roc_auc": 0.9711267501066833,
-                "pr_auc": 0.967872727139163,
-                "fpr": 0.10984427141268076,
-                "fnr": 0.07167730702263495
+                "accuracy": 0.9142289122408407,
+                "precision": 0.8895285087719298,
+                "recall": 0.9416715031921068,
+                "f1": 0.9148576261629546,
+                "roc_auc": 0.9781261681096622,
+                "pr_auc": 0.9774888382862454,
+                "fpr": 0.11206896551724138,
+                "fnr": 0.05832849680789321
             }
+        },
+        "feature_importances": {
+            "num_slashes": 0.5330008268356323,
+            "dns_record": 0.14022792875766754,
+            "tld_length": 0.06290532648563385,
+            "query_length": 0.03652779757976532,
+            "path_length": 0.024958042427897453,
+            "domain_digit_ratio": 0.024756697937846184,
+            "tld": 0.02129192464053631,
+            "num_dots": 0.016893206164240837,
+            "url_depth": 0.016472354531288147,
+            "has_query": 0.016268877312541008,
+            "special_char_ratio": 0.015436106361448765,
+            "domain_length": 0.012560968287289143,
+            "has_dash": 0.012313861399888992,
+            "has_at": 0.011605864390730858,
+            "has_ip": 0.011356106027960777,
+            "url_length": 0.009105398319661617,
+            "has_encoding": 0.008569696918129921,
+            "domain_entropy": 0.008290914818644524,
+            "num_parameters": 0.0069343834184110165,
+            "https": 0.003784840926527977,
+            "has_punycode": 0.0035986213479191065,
+            "num_hyphens_domain": 0.003140255343168974,
+            "has_subdomain": 0.0,
+            "fragment_length": 0.0,
+            "subdomain_depth": 0.0,
+            "has_explicit_port": 0.0
         }
     },
     "catboost": {
-        "timestamp": "2026-08-22T11:58:48.904353",
+        "timestamp": "2026-08-22T12:41:38.354347",
         "model": "catboost",
         "metrics": {
             "training_resources": {
-                "time_seconds": 1.6251962184906006,
-                "peak_memory_mb": 0.054290771484375,
-                "process_memory_mb": 730.98828125
+                "time_seconds": 1.4108781814575195,
+                "peak_memory_mb": 0.060794830322265625,
+                "process_memory_mb": 683.02734375
             },
             "inference_resources": {
-                "time_seconds": 0.012440204620361328,
-                "peak_memory_mb": 0.11340713500976562,
-                "process_memory_mb": 731.62890625,
-                "latency_per_sample_ms": 0.001766572652706806
+                "time_seconds": 0.013797283172607422,
+                "peak_memory_mb": 0.12009048461914062,
+                "process_memory_mb": 683.8671875,
+                "latency_per_sample_ms": 0.0019592847447610653
             },
             "evaluation": {
-                "accuracy": 0.9085487077534792,
-                "precision": 0.890033407572383,
-                "recall": 0.9277423099245502,
-                "f1": 0.9084967320261438,
-                "roc_auc": 0.9716342221349962,
-                "pr_auc": 0.9685453932805039,
-                "fpr": 0.10984427141268076,
-                "fnr": 0.0722576900754498
+                "accuracy": 0.9157909684748651,
+                "precision": 0.8917879703378193,
+                "recall": 0.9422518862449216,
+                "f1": 0.9163256667137012,
+                "roc_auc": 0.9790337025662745,
+                "pr_auc": 0.9783495868099444,
+                "fpr": 0.10956618464961068,
+                "fnr": 0.05774811375507835
             }
+        },
+        "feature_importances": {
+            "num_slashes": 36.71080939854032,
+            "path_length": 11.600403678704177,
+            "dns_record": 9.501790140555554,
+            "tld": 6.526824998286888,
+            "special_char_ratio": 6.307099466564366,
+            "domain_digit_ratio": 4.939617856761137,
+            "tld_length": 4.1137917506775565,
+            "url_depth": 3.524139135193013,
+            "subdomain_depth": 2.7939596435124625,
+            "domain_length": 2.756544677660317,
+            "domain_entropy": 2.7429951502164505,
+            "url_length": 2.3092371135835683,
+            "query_length": 1.6371624219336025,
+            "has_subdomain": 1.2444629449921483,
+            "num_dots": 1.1924489810760517,
+            "num_parameters": 0.4944828036034899,
+            "has_query": 0.44178597022624294,
+            "has_dash": 0.39315681907354094,
+            "has_at": 0.37428148099800124,
+            "num_hyphens_domain": 0.24673342363842443,
+            "has_encoding": 0.14211878954190996,
+            "https": 0.006153354660745097,
+            "has_ip": 0.0,
+            "fragment_length": 0.0,
+            "has_punycode": 0.0,
+            "has_explicit_port": 0.0
         }
     },
     "char_cnn": {
-        "timestamp": "2026-08-22T11:59:28.181199",
+        "timestamp": "2026-08-22T12:42:08.773962",
         "model": "char_cnn",
         "metrics": {
             "training_resources": {
-                "time_seconds": 38.21972107887268,
-                "peak_memory_mb": 67.15315437316895,
-                "process_memory_mb": 914.6796875
+                "time_seconds": 29.31570792198181,
+                "peak_memory_mb": 67.16972827911377,
+                "process_memory_mb": 875.421875
             },
             "inference_resources": {
-                "time_seconds": 0.5111300945281982,
-                "peak_memory_mb": 10.746037483215332,
-                "process_memory_mb": 812.2734375,
-                "latency_per_sample_ms": 0.07258308641411507
+                "time_seconds": 0.5829019546508789,
+                "peak_memory_mb": 10.747505187988281,
+                "process_memory_mb": 800.67578125,
+                "latency_per_sample_ms": 0.08277505746249346
             },
             "evaluation": {
-                "accuracy": 0.9333996023856859,
-                "precision": 0.9490196078431372,
-                "recall": 0.9129425420777714,
-                "f1": 0.9306315633781985,
-                "roc_auc": 0.9854525761195938,
-                "pr_auc": 0.9854668280672462,
-                "fpr": 0.04699666295884316,
-                "fnr": 0.08705745792222867
+                "accuracy": 0.9342516330587901,
+                "precision": 0.9109947643979057,
+                "recall": 0.95937318630296,
+                "f1": 0.9345583038869258,
+                "roc_auc": 0.9857580196478063,
+                "pr_auc": 0.9861975329454907,
+                "fpr": 0.08982202447163515,
+                "fnr": 0.04062681369704005
             }
         }
     }
