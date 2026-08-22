@@ -153,3 +153,29 @@
 2026-08-22 15:04:20,661 - INFO -  * Debugger PIN: 677-211-923
 2026-08-22 15:04:50,053 - INFO - 127.0.0.1 - - [22/Aug/2026 15:04:50] "POST /api/predict HTTP/1.1" 200 -
 2026-08-22 15:07:05,852 - INFO - 127.0.0.1 - - [22/Aug/2026 15:07:05] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:16:24,746 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 15:16:24,760 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 15:16:24,760 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 15:16:24,761 - INFO -  * Restarting with stat
+2026-08-22 15:16:27,166 - INFO - Initialized SHAP TreeExplainer.
+2026-08-22 15:16:27,173 - WARNING -  * Debugger is active!
+2026-08-22 15:16:27,175 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 15:17:06,564 - INFO - 127.0.0.1 - - [22/Aug/2026 15:17:06] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:17:21,256 - INFO - Feedback logged: false_positive for https://www.mictech.edu.in/
+2026-08-22 15:17:21,256 - INFO - 127.0.0.1 - - [22/Aug/2026 15:17:21] "POST /api/feedback HTTP/1.1" 200 -
+2026-08-22 15:17:23,131 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 15:17:23,132 - INFO - 127.0.0.1 - - [22/Aug/2026 15:17:23] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:18:56,350 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 15:18:56,352 - INFO - 127.0.0.1 - - [22/Aug/2026 15:18:56] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:00,237 - INFO - Feedback logged: false_positive for https://www.mictech.edu.in/
+2026-08-22 15:19:00,237 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:00] "POST /api/feedback HTTP/1.1" 200 -
+2026-08-22 15:19:11,466 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:11] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:15,306 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:15] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:19,148 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:19] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:28,619 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:28] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:29,119 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:29] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 15:19:39,160 - INFO - Feedback logged: false_negative for https://aniwaves.ru/watch/tongari-boushi-no-atelier-82556/ep-1
+2026-08-22 15:19:39,160 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:39] "POST /api/feedback HTTP/1.1" 200 -
+2026-08-22 15:19:40,422 - INFO - Cache hit for URL: https://aniwaves.ru/watch/tongari-boushi-no-atelier-82556/ep-1
+2026-08-22 15:19:40,422 - INFO - 127.0.0.1 - - [22/Aug/2026 15:19:40] "POST /api/predict HTTP/1.1" 200 -

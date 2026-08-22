@@ -11,6 +11,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let currentUrl = '';
 
+    // Wire up settings button
+    const settingsBtn = document.getElementById('settings-btn');
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+            if (chrome.runtime.openOptionsPage) {
+                chrome.runtime.openOptionsPage();
+            } else {
+                window.open(chrome.runtime.getURL('options/options.html'));
+            }
+        });
+    }
+
     // Get current active tab
     try {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
