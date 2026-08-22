@@ -3,3 +3,12 @@ timestamp,url,result,confidence
 2026-08-22T13:19:26.745901,https://github.com/Amevrynx/phishingDetector,LOW,0.6939
 2026-08-22T13:20:24.190032,https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983,CRITICAL,0.8251999999999999
 2026-08-22T13:20:48.666317,https://accounts.google.com/v3/signin/confirmidentifier?authuser=0&continue=https://mail.google.com/mail/u/0/&emr=1&followup=https://mail.google.com/mail/u/0/&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1814935111:1787385045196680,MEDIUM,0.9899
+2026-08-22T13:35:08.838548,https://github.com/Amevrynx/phishingDetector,LOW,0.6939
+2026-08-22T13:35:16.590203,https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983,LOW,0.8251999999999999
+2026-08-22T13:36:10.600147,https://alumni.mictech.dpdns.org/,LOW,0.3789
+2026-08-22T13:36:44.828677,http://feepay.mictech.ac.in/,CRITICAL,0.9993000000000001
+2026-08-22T13:37:10.254371,https://www.mictech.edu.in/,CRITICAL,0.9323999999999999
+2026-08-22T13:38:26.889610,https://cheri-xi.vercel.app/,LOW,0.1265
+2026-08-22T13:49:13.866298,https://github.com/Amevrynx/phishingDetector,LOW,0.6939
+2026-08-22T13:49:52.749276,https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983,LOW,0.8251999999999999
+2026-08-22T13:50:47.004425,https://minorcourse.mictech.edu.in/adminlogin.html,CRITICAL,0.9887999999999999

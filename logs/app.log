@@ -24,3 +24,78 @@
 2026-08-22 13:20:24,192 - INFO - 127.0.0.1 - - [22/Aug/2026 13:20:24] "POST /api/predict HTTP/1.1" 200 -
 2026-08-22 13:20:48,668 - INFO - Logged 1 URLs to data/new_urls.csv
 2026-08-22 13:20:48,669 - INFO - 127.0.0.1 - - [22/Aug/2026 13:20:48] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:34:58,866 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 13:34:58,866 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 13:34:58,867 - INFO -  * Restarting with stat
+2026-08-22 13:35:01,653 - WARNING -  * Debugger is active!
+2026-08-22 13:35:01,656 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 13:35:08,843 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:35:08,845 - INFO - 127.0.0.1 - - [22/Aug/2026 13:35:08] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:35:16,593 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:35:16,594 - INFO - 127.0.0.1 - - [22/Aug/2026 13:35:16] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:36:10,601 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:36:10,602 - INFO - 127.0.0.1 - - [22/Aug/2026 13:36:10] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:36:44,830 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:36:44,830 - INFO - 127.0.0.1 - - [22/Aug/2026 13:36:44] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:37:10,257 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:37:10,258 - INFO - 127.0.0.1 - - [22/Aug/2026 13:37:10] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:37:20,123 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 13:37:20,123 - INFO - 127.0.0.1 - - [22/Aug/2026 13:37:20] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:37:20,762 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 13:37:20,762 - INFO - 127.0.0.1 - - [22/Aug/2026 13:37:20] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:37:29,451 - INFO - Cache hit for URL: https://www.mictech.edu.in/
+2026-08-22 13:37:29,452 - INFO - 127.0.0.1 - - [22/Aug/2026 13:37:29] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:38:12,396 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 13:38:12,396 - INFO - 127.0.0.1 - - [22/Aug/2026 13:38:12] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:38:26,891 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:38:26,891 - INFO - 127.0.0.1 - - [22/Aug/2026 13:38:26] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:48:53,669 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-08-22 13:48:53,670 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-22 13:48:53,671 - INFO -  * Restarting with stat
+2026-08-22 13:48:56,330 - WARNING -  * Debugger is active!
+2026-08-22 13:48:56,333 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 13:49:13,871 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:49:13,872 - INFO - 127.0.0.1 - - [22/Aug/2026 13:49:13] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:49:52,751 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:49:52,752 - INFO - 127.0.0.1 - - [22/Aug/2026 13:49:52] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:19,807 - INFO - Cache hit for URL: https://chatgpt.com/c/6a89254c-c708-83ee-a378-455cecff7983
+2026-08-22 13:50:19,807 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:19] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:22,791 - INFO - Cache hit for URL: https://github.com/Amevrynx/phishingDetector
+2026-08-22 13:50:22,791 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:22] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:26,071 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:26] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:31,727 - INFO - Cache hit for URL: chrome://extensions/?errors=cbiiecbhjpacfcecdpiianoloabfiafa
+2026-08-22 13:50:31,728 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:31] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:47,006 - INFO - Logged 1 URLs to data/new_urls.csv
+2026-08-22 13:50:47,007 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:47] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:50:57,253 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:50:57,254 - INFO - 127.0.0.1 - - [22/Aug/2026 13:50:57] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:04,007 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:04,007 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:04] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:09,513 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:09,513 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:09] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:35,585 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:35,586 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:35] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:36,625 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:36,626 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:36] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:37,103 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:37,104 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:37] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:37,577 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:37,577 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:37] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:38,032 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:38,033 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:38] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:38,440 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:38,440 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:38] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:38,849 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:38,849 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:38] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:39,242 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:39,242 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:39] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 13:51:44,454 - INFO - Cache hit for URL: https://minorcourse.mictech.edu.in/adminlogin.html
+2026-08-22 13:51:44,455 - INFO - 127.0.0.1 - - [22/Aug/2026 13:51:44] "POST /api/predict HTTP/1.1" 200 -
+2026-08-22 14:06:12,036 - INFO -  * Detected change in 'c:\\Users\\Avinash\\Documents\\projects\\phishingDetector\\detector\\heuristics\\scoring.py', reloading
+2026-08-22 14:06:12,517 - INFO -  * Restarting with stat
+2026-08-22 14:06:15,515 - WARNING -  * Debugger is active!
+2026-08-22 14:06:15,520 - INFO -  * Debugger PIN: 677-211-923
+2026-08-22 14:06:19,128 - INFO -  * Detected change in 'c:\\Users\\Avinash\\Documents\\projects\\phishingDetector\\detector\\heuristics\\domain_rules.py', reloading
+2026-08-22 14:06:19,628 - INFO -  * Restarting with stat

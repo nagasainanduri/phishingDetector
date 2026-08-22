@@ -1,19 +1,31 @@
 import logging
-from .features.url_features import extract_features, validate_url
+logger = logging.getLogger(__name__)
+from .features.url_features import extract_features
 from .models.predictor import PhishingPredictor
 from .heuristics import create_engine as create_heuristic_engine
 from .risk.engine import RiskEngine
+from .brand.detector import BrandDetector
 from .types import DetectionResult
+from urllib.parse import urlparse
+import re
 
-logger = logging.getLogger(__name__)
+def validate_url(url: str) -> bool:
+    if not re.match(r'^https?://', url):
+        url = 'http://' + url
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except:
+        return False
 
 class PhishingDetector:
-    def __init__(self, model_path='models/benchmarks/char_cnn.pkl'):
-        self.predictor = PhishingPredictor(model_path)
+    def __init__(self):
+        self.predictor = PhishingPredictor()
         self.heuristic_engine = create_heuristic_engine()
         self.risk_engine = RiskEngine()
+        self.brand_detector = BrandDetector()
         
-    def analyze(self, url: str) -> dict:
+    def analyze(self, url: str, page_signals: dict = None) -> dict:
         """
         Analyzes a URL and returns standard prediction output along with risk assessment.
         """
@@ -38,16 +50,20 @@ class PhishingDetector:
                 
             pred_res = self.predictor.predict(url, features)
             
-            # 1. Run Heuristics
-            heuristic_findings = self.heuristic_engine.evaluate(url)
+            # 1. Run Brand Detection
+            brand_findings = self.brand_detector.analyze(url)
             
-            # 2. Package Detection Result
+            # 2. Run Heuristics
+            heuristic_findings = self.heuristic_engine.evaluate(url, page_signals=page_signals, brand_findings=brand_findings)
+            
+            # 3. Package Detection Result
             detection = DetectionResult(
                 url=url,
-                ml_probability=pred_res['confidence'],
-                ml_model_name='char_cnn',
-                is_calibrated_probability=False,
-                heuristic_findings=heuristic_findings
+                ml_probability=pred_res['raw_probability'],
+                ml_model_name=pred_res['model_name'],
+                is_calibrated_probability=pred_res['is_calibrated'],
+                heuristic_findings=heuristic_findings,
+                future_brand_findings=[brand_findings] if brand_findings else []
             )
             
             # 3. Evaluate Risk

@@ -24,6 +24,8 @@ class RuleMatch:
             "evidence": self.evidence
         }
 
+import inspect
+
 class HeuristicEngine:
     def __init__(self):
         self.rules = []
@@ -31,7 +33,7 @@ class HeuristicEngine:
     def register_rule(self, rule_func):
         self.rules.append(rule_func)
 
-    def evaluate(self, url: str) -> List[RuleMatch]:
+    def evaluate(self, url: str, page_signals: dict = None, brand_findings: dict = None) -> List[RuleMatch]:
         try:
             if not url.startswith(('http://', 'https://')):
                 url = f"http://{url}"
@@ -42,7 +44,14 @@ class HeuristicEngine:
         matches = []
         for rule in self.rules:
             try:
-                match = rule(url, parsed)
+                sig = inspect.signature(rule)
+                kwargs = {}
+                if 'page_signals' in sig.parameters:
+                    kwargs['page_signals'] = page_signals
+                if 'brand_findings' in sig.parameters:
+                    kwargs['brand_findings'] = brand_findings
+                    
+                match = rule(url, parsed, **kwargs)
                 if match:
                     if isinstance(match, list):
                         matches.extend(match)

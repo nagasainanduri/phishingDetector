@@ -59,6 +59,7 @@ def index():
 def predict():
     data = request.form if request.form else request.json
     urls = data.get('urls') if isinstance(data.get('urls'), list) else [data.get('url')]
+    page_signals = data.get('page_signals')
     if not urls or not urls[0]:
         logger.warning("No URLs provided in request")
         return jsonify({'error': 'No URLs provided'}), 400
@@ -78,7 +79,7 @@ def predict():
 
             # Predict
             try:
-                result_dict = detector.analyze(url)
+                result_dict = detector.analyze(url, page_signals=page_signals)
                 results.append(result_dict)
                 
                 # If there's no error, we log it

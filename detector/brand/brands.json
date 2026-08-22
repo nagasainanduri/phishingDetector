@@ -1,0 +1,1139 @@
+{
+  "apple": {
+    "known_domains": [
+      "apple.com",
+      "icloud.com",
+      "me.com",
+      "mac.com"
+    ]
+  },
+  "google": {
+    "known_domains": [
+      "google.com",
+      "gmail.com",
+      "youtube.com",
+      "android.com",
+      "drive.google.com"
+    ]
+  },
+  "microsoft": {
+    "known_domains": [
+      "microsoft.com",
+      "office.com",
+      "live.com",
+      "outlook.com",
+      "skype.com",
+      "windows.com",
+      "onedrive.live.com"
+    ]
+  },
+  "amazon": {
+    "known_domains": [
+      "amazon.com",
+      "aws.amazon.com",
+      "amazon.co.uk",
+      "amazon.de",
+      "amazon.co.jp"
+    ]
+  },
+  "facebook": {
+    "known_domains": [
+      "facebook.com",
+      "fb.com",
+      "messenger.com"
+    ]
+  },
+  "netflix": {
+    "known_domains": [
+      "netflix.com"
+    ]
+  },
+  "yahoo": {
+    "known_domains": [
+      "yahoo.com",
+      "mail.yahoo.com"
+    ]
+  },
+  "github": {
+    "known_domains": [
+      "github.com",
+      "github.io"
+    ]
+  },
+  "gitlab": {
+    "known_domains": [
+      "gitlab.com"
+    ]
+  },
+  "dropbox": {
+    "known_domains": [
+      "dropbox.com"
+    ]
+  },
+  "adobe": {
+    "known_domains": [
+      "adobe.com"
+    ]
+  },
+  "slack": {
+    "known_domains": [
+      "slack.com"
+    ]
+  },
+  "zoom": {
+    "known_domains": [
+      "zoom.us",
+      "zoom.com"
+    ]
+  },
+  "webex": {
+    "known_domains": [
+      "webex.com"
+    ]
+  },
+  "atlassian": {
+    "known_domains": [
+      "atlassian.com",
+      "atlassian.net",
+      "jira.com",
+      "trello.com"
+    ]
+  },
+  "salesforce": {
+    "known_domains": [
+      "salesforce.com"
+    ]
+  },
+  "oracle": {
+    "known_domains": [
+      "oracle.com"
+    ]
+  },
+  "ibm": {
+    "known_domains": [
+      "ibm.com"
+    ]
+  },
+  "cisco": {
+    "known_domains": [
+      "cisco.com"
+    ]
+  },
+  "okta": {
+    "known_domains": [
+      "okta.com"
+    ]
+  },
+  "docusign": {
+    "known_domains": [
+      "docusign.com",
+      "docusign.net"
+    ]
+  },
+  "intuit": {
+    "known_domains": [
+      "intuit.com",
+      "turbotax.com",
+      "quickbooks.com"
+    ]
+  },
+  "canva": {
+    "known_domains": [
+      "canva.com"
+    ]
+  },
+  "box": {
+    "known_domains": [
+      "box.com"
+    ]
+  },
+  "cloudflare": {
+    "known_domains": [
+      "cloudflare.com"
+    ]
+  },
+  "godaddy": {
+    "known_domains": [
+      "godaddy.com"
+    ]
+  },
+  "namecheap": {
+    "known_domains": [
+      "namecheap.com"
+    ]
+  },
+  "squarespace": {
+    "known_domains": [
+      "squarespace.com"
+    ]
+  },
+  "wix": {
+    "known_domains": [
+      "wix.com"
+    ]
+  },
+  "wordpress": {
+    "known_domains": [
+      "wordpress.com",
+      "wordpress.org"
+    ]
+  },
+  "paypal": {
+    "known_domains": [
+      "paypal.com",
+      "paypal.me"
+    ]
+  },
+  "chase": {
+    "known_domains": [
+      "chase.com"
+    ]
+  },
+  "bankofamerica": {
+    "known_domains": [
+      "bankofamerica.com",
+      "bofa.com"
+    ]
+  },
+  "wellsfargo": {
+    "known_domains": [
+      "wellsfargo.com"
+    ]
+  },
+  "citi": {
+    "known_domains": [
+      "citi.com",
+      "citibank.com"
+    ]
+  },
+  "americanexpress": {
+    "known_domains": [
+      "americanexpress.com",
+      "amex.com"
+    ]
+  },
+  "capitalone": {
+    "known_domains": [
+      "capitalone.com"
+    ]
+  },
+  "discover": {
+    "known_domains": [
+      "discover.com"
+    ]
+  },
+  "usbank": {
+    "known_domains": [
+      "usbank.com"
+    ]
+  },
+  "pnc": {
+    "known_domains": [
+      "pnc.com"
+    ]
+  },
+  "tdbank": {
+    "known_domains": [
+      "td.com",
+      "tdbank.com"
+    ]
+  },
+  "barclays": {
+    "known_domains": [
+      "barclays.co.uk",
+      "barclays.com"
+    ]
+  },
+  "santander": {
+    "known_domains": [
+      "santander.co.uk",
+      "santander.com",
+      "santander.es",
+      "santander.com.br"
+    ]
+  },
+  "hsbc": {
+    "known_domains": [
+      "hsbc.com",
+      "hsbc.co.uk",
+      "hsbc.com.hk"
+    ]
+  },
+  "lloyds": {
+    "known_domains": [
+      "lloydsbank.com",
+      "lloydsbankinggroup.com"
+    ]
+  },
+  "natwest": {
+    "known_domains": [
+      "natwest.com"
+    ]
+  },
+  "halifax": {
+    "known_domains": [
+      "halifax.co.uk"
+    ]
+  },
+  "nationwide": {
+    "known_domains": [
+      "nationwide.co.uk"
+    ]
+  },
+  "square": {
+    "known_domains": [
+      "squareup.com",
+      "square.com"
+    ]
+  },
+  "cashapp": {
+    "known_domains": [
+      "cash.app"
+    ]
+  },
+  "venmo": {
+    "known_domains": [
+      "venmo.com"
+    ]
+  },
+  "stripe": {
+    "known_domains": [
+      "stripe.com"
+    ]
+  },
+  "wise": {
+    "known_domains": [
+      "wise.com",
+      "transferwise.com"
+    ]
+  },
+  "revolut": {
+    "known_domains": [
+      "revolut.com"
+    ]
+  },
+  "monzo": {
+    "known_domains": [
+      "monzo.com"
+    ]
+  },
+  "chime": {
+    "known_domains": [
+      "chime.com"
+    ]
+  },
+  "payoneer": {
+    "known_domains": [
+      "payoneer.com"
+    ]
+  },
+  "skrill": {
+    "known_domains": [
+      "skrill.com"
+    ]
+  },
+  "rabobank": {
+    "known_domains": [
+      "rabobank.nl",
+      "rabobank.com"
+    ]
+  },
+  "ing": {
+    "known_domains": [
+      "ing.com",
+      "ing.nl",
+      "ing.be"
+    ]
+  },
+  "abnamro": {
+    "known_domains": [
+      "abnamro.nl"
+    ]
+  },
+  "societegenerale": {
+    "known_domains": [
+      "societegenerale.fr",
+      "societegenerale.com"
+    ]
+  },
+  "bnp_paribas": {
+    "known_domains": [
+      "mabanque.bnpparibas",
+      "bnpparibas.com"
+    ]
+  },
+  "creditagricole": {
+    "known_domains": [
+      "credit-agricole.fr"
+    ]
+  },
+  "icici": {
+    "known_domains": [
+      "icicibank.com"
+    ]
+  },
+  "hdfc": {
+    "known_domains": [
+      "hdfcbank.com"
+    ]
+  },
+  "sbi": {
+    "known_domains": [
+      "onlinesbi.sbi",
+      "sbi.co.in"
+    ]
+  },
+  "axisbank": {
+    "known_domains": [
+      "axisbank.com"
+    ]
+  },
+  "commbank": {
+    "known_domains": [
+      "commbank.com.au"
+    ]
+  },
+  "westpac": {
+    "known_domains": [
+      "westpac.com.au"
+    ]
+  },
+  "anz": {
+    "known_domains": [
+      "anz.com",
+      "anz.com.au"
+    ]
+  },
+  "nab": {
+    "known_domains": [
+      "nab.com.au"
+    ]
+  },
+  "scotiabank": {
+    "known_domains": [
+      "scotiabank.com"
+    ]
+  },
+  "rbc": {
+    "known_domains": [
+      "rbcroyalbank.com",
+      "rbc.com"
+    ]
+  },
+  "bmo": {
+    "known_domains": [
+      "bmo.com"
+    ]
+  },
+  "cibc": {
+    "known_domains": [
+      "cibc.com"
+    ]
+  },
+  "tdcanada": {
+    "known_domains": [
+      "td.com/ca"
+    ]
+  },
+  "binance": {
+    "known_domains": [
+      "binance.com"
+    ]
+  },
+  "coinbase": {
+    "known_domains": [
+      "coinbase.com"
+    ]
+  },
+  "kraken": {
+    "known_domains": [
+      "kraken.com"
+    ]
+  },
+  "kucoin": {
+    "known_domains": [
+      "kucoin.com"
+    ]
+  },
+  "huobi": {
+    "known_domains": [
+      "huobi.com"
+    ]
+  },
+  "bitfinex": {
+    "known_domains": [
+      "bitfinex.com"
+    ]
+  },
+  "gemini": {
+    "known_domains": [
+      "gemini.com"
+    ]
+  },
+  "crypto": {
+    "known_domains": [
+      "crypto.com"
+    ]
+  },
+  "okx": {
+    "known_domains": [
+      "okx.com"
+    ]
+  },
+  "bybit": {
+    "known_domains": [
+      "bybit.com"
+    ]
+  },
+  "trustwallet": {
+    "known_domains": [
+      "trustwallet.com"
+    ]
+  },
+  "metamask": {
+    "known_domains": [
+      "metamask.io"
+    ]
+  },
+  "ledger": {
+    "known_domains": [
+      "ledger.com"
+    ]
+  },
+  "trezor": {
+    "known_domains": [
+      "trezor.io"
+    ]
+  },
+  "pancakeswap": {
+    "known_domains": [
+      "pancakeswap.finance"
+    ]
+  },
+  "uniswap": {
+    "known_domains": [
+      "uniswap.org"
+    ]
+  },
+  "opensea": {
+    "known_domains": [
+      "opensea.io"
+    ]
+  },
+  "blur": {
+    "known_domains": [
+      "blur.io"
+    ]
+  },
+  "instagram": {
+    "known_domains": [
+      "instagram.com"
+    ]
+  },
+  "linkedin": {
+    "known_domains": [
+      "linkedin.com"
+    ]
+  },
+  "whatsapp": {
+    "known_domains": [
+      "whatsapp.com"
+    ]
+  },
+  "discord": {
+    "known_domains": [
+      "discord.com",
+      "discord.gg"
+    ]
+  },
+  "telegram": {
+    "known_domains": [
+      "telegram.org",
+      "t.me"
+    ]
+  },
+  "twitter": {
+    "known_domains": [
+      "twitter.com",
+      "x.com"
+    ]
+  },
+  "snapchat": {
+    "known_domains": [
+      "snapchat.com"
+    ]
+  },
+  "tiktok": {
+    "known_domains": [
+      "tiktok.com"
+    ]
+  },
+  "pinterest": {
+    "known_domains": [
+      "pinterest.com"
+    ]
+  },
+  "reddit": {
+    "known_domains": [
+      "reddit.com"
+    ]
+  },
+  "tumblr": {
+    "known_domains": [
+      "tumblr.com"
+    ]
+  },
+  "tinder": {
+    "known_domains": [
+      "tinder.com"
+    ]
+  },
+  "bumble": {
+    "known_domains": [
+      "bumble.com"
+    ]
+  },
+  "badoo": {
+    "known_domains": [
+      "badoo.com"
+    ]
+  },
+  "match": {
+    "known_domains": [
+      "match.com"
+    ]
+  },
+  "ebay": {
+    "known_domains": [
+      "ebay.com",
+      "ebay.co.uk",
+      "ebay.de"
+    ]
+  },
+  "walmart": {
+    "known_domains": [
+      "walmart.com"
+    ]
+  },
+  "target": {
+    "known_domains": [
+      "target.com"
+    ]
+  },
+  "aliexpress": {
+    "known_domains": [
+      "aliexpress.com",
+      "aliexpress.ru"
+    ]
+  },
+  "alibaba": {
+    "known_domains": [
+      "alibaba.com"
+    ]
+  },
+  "shopify": {
+    "known_domains": [
+      "shopify.com"
+    ]
+  },
+  "bestbuy": {
+    "known_domains": [
+      "bestbuy.com"
+    ]
+  },
+  "homedepot": {
+    "known_domains": [
+      "homedepot.com"
+    ]
+  },
+  "costco": {
+    "known_domains": [
+      "costco.com"
+    ]
+  },
+  "ikea": {
+    "known_domains": [
+      "ikea.com"
+    ]
+  },
+  "macys": {
+    "known_domains": [
+      "macys.com"
+    ]
+  },
+  "shopee": {
+    "known_domains": [
+      "shopee.com",
+      "shopee.sg",
+      "shopee.co.id",
+      "shopee.ph",
+      "shopee.com.my",
+      "shopee.co.th",
+      "shopee.vn"
+    ]
+  },
+  "lazada": {
+    "known_domains": [
+      "lazada.com",
+      "lazada.sg",
+      "lazada.co.id",
+      "lazada.com.my",
+      "lazada.co.th",
+      "lazada.vn",
+      "lazada.com.ph"
+    ]
+  },
+  "tokopedia": {
+    "known_domains": [
+      "tokopedia.com"
+    ]
+  },
+  "flipkart": {
+    "known_domains": [
+      "flipkart.com"
+    ]
+  },
+  "mercado_libre": {
+    "known_domains": [
+      "mercadolibre.com",
+      "mercadolivre.com.br",
+      "mercadolibre.com.ar",
+      "mercadolibre.com.mx"
+    ]
+  },
+  "rakuten": {
+    "known_domains": [
+      "rakuten.com",
+      "rakuten.co.jp"
+    ]
+  },
+  "coupang": {
+    "known_domains": [
+      "coupang.com"
+    ]
+  },
+  "fedex": {
+    "known_domains": [
+      "fedex.com"
+    ]
+  },
+  "ups": {
+    "known_domains": [
+      "ups.com"
+    ]
+  },
+  "dhl": {
+    "known_domains": [
+      "dhl.com",
+      "dhl.de"
+    ]
+  },
+  "usps": {
+    "known_domains": [
+      "usps.com"
+    ]
+  },
+  "royalmail": {
+    "known_domains": [
+      "royalmail.com"
+    ]
+  },
+  "dpd": {
+    "known_domains": [
+      "dpd.com",
+      "dpd.co.uk",
+      "dpd.de"
+    ]
+  },
+  "hermes": {
+    "known_domains": [
+      "myhermes.co.uk",
+      "evri.com"
+    ]
+  },
+  "chronopost": {
+    "known_domains": [
+      "chronopost.fr"
+    ]
+  },
+  "colissimo": {
+    "known_domains": [
+      "laposte.fr",
+      "colissimo.fr"
+    ]
+  },
+  "correos": {
+    "known_domains": [
+      "correos.es"
+    ]
+  },
+  "auspost": {
+    "known_domains": [
+      "auspost.com.au"
+    ]
+  },
+  "canadapost": {
+    "known_domains": [
+      "canadapost-postescanada.ca"
+    ]
+  },
+  "japanpost": {
+    "known_domains": [
+      "post.japanpost.jp"
+    ]
+  },
+  "india_post": {
+    "known_domains": [
+      "indiapost.gov.in"
+    ]
+  },
+  "att": {
+    "known_domains": [
+      "att.com"
+    ]
+  },
+  "verizon": {
+    "known_domains": [
+      "verizon.com",
+      "verizonwireless.com"
+    ]
+  },
+  "tmobile": {
+    "known_domains": [
+      "t-mobile.com"
+    ]
+  },
+  "comcast": {
+    "known_domains": [
+      "comcast.net",
+      "comcast.com"
+    ]
+  },
+  "xfinity": {
+    "known_domains": [
+      "xfinity.com"
+    ]
+  },
+  "spectrum": {
+    "known_domains": [
+      "spectrum.com",
+      "spectrum.net"
+    ]
+  },
+  "vodafone": {
+    "known_domains": [
+      "vodafone.com",
+      "vodafone.co.uk",
+      "vodafone.de",
+      "vodafone.it",
+      "vodafone.es"
+    ]
+  },
+  "orange": {
+    "known_domains": [
+      "orange.com",
+      "orange.fr"
+    ]
+  },
+  "o2": {
+    "known_domains": [
+      "o2.co.uk",
+      "o2.de"
+    ]
+  },
+  "bt": {
+    "known_domains": [
+      "bt.com"
+    ]
+  },
+  "virginmedia": {
+    "known_domains": [
+      "virginmedia.com"
+    ]
+  },
+  "sky": {
+    "known_domains": [
+      "sky.com"
+    ]
+  },
+  "telstra": {
+    "known_domains": [
+      "telstra.com.au"
+    ]
+  },
+  "optus": {
+    "known_domains": [
+      "optus.com.au"
+    ]
+  },
+  "bell": {
+    "known_domains": [
+      "bell.ca"
+    ]
+  },
+  "rogers": {
+    "known_domains": [
+      "rogers.com"
+    ]
+  },
+  "telus": {
+    "known_domains": [
+      "telus.com"
+    ]
+  },
+  "jio": {
+    "known_domains": [
+      "jio.com"
+    ]
+  },
+  "airtel": {
+    "known_domains": [
+      "airtel.in"
+    ]
+  },
+  "vi": {
+    "known_domains": [
+      "myvi.in"
+    ]
+  },
+  "steam": {
+    "known_domains": [
+      "steampowered.com",
+      "steamcommunity.com"
+    ]
+  },
+  "epicgames": {
+    "known_domains": [
+      "epicgames.com"
+    ]
+  },
+  "ea": {
+    "known_domains": [
+      "ea.com"
+    ]
+  },
+  "ubisoft": {
+    "known_domains": [
+      "ubisoft.com"
+    ]
+  },
+  "blizzard": {
+    "known_domains": [
+      "blizzard.com",
+      "battle.net"
+    ]
+  },
+  "riotgames": {
+    "known_domains": [
+      "riotgames.com",
+      "leagueoflegends.com",
+      "valorant.com"
+    ]
+  },
+  "playstation": {
+    "known_domains": [
+      "playstation.com"
+    ]
+  },
+  "xbox": {
+    "known_domains": [
+      "xbox.com"
+    ]
+  },
+  "nintendo": {
+    "known_domains": [
+      "nintendo.com"
+    ]
+  },
+  "roblox": {
+    "known_domains": [
+      "roblox.com"
+    ]
+  },
+  "twitch": {
+    "known_domains": [
+      "twitch.tv"
+    ]
+  },
+  "spotify": {
+    "known_domains": [
+      "spotify.com"
+    ]
+  },
+  "hulu": {
+    "known_domains": [
+      "hulu.com"
+    ]
+  },
+  "disneyplus": {
+    "known_domains": [
+      "disneyplus.com"
+    ]
+  },
+  "booking": {
+    "known_domains": [
+      "booking.com"
+    ]
+  },
+  "expedia": {
+    "known_domains": [
+      "expedia.com"
+    ]
+  },
+  "airbnb": {
+    "known_domains": [
+      "airbnb.com"
+    ]
+  },
+  "uber": {
+    "known_domains": [
+      "uber.com"
+    ]
+  },
+  "lyft": {
+    "known_domains": [
+      "lyft.com"
+    ]
+  },
+  "grab": {
+    "known_domains": [
+      "grab.com"
+    ]
+  },
+  "gojek": {
+    "known_domains": [
+      "gojek.com"
+    ]
+  },
+  "ola": {
+    "known_domains": [
+      "olacabs.com"
+    ]
+  },
+  "ryanair": {
+    "known_domains": [
+      "ryanair.com"
+    ]
+  },
+  "easyjet": {
+    "known_domains": [
+      "easyjet.com"
+    ]
+  },
+  "delta": {
+    "known_domains": [
+      "delta.com"
+    ]
+  },
+  "americanairlines": {
+    "known_domains": [
+      "aa.com"
+    ]
+  },
+  "united": {
+    "known_domains": [
+      "united.com"
+    ]
+  },
+  "emirates": {
+    "known_domains": [
+      "emirates.com"
+    ]
+  },
+  "qatarairways": {
+    "known_domains": [
+      "qatarairways.com"
+    ]
+  },
+  "lufthansa": {
+    "known_domains": [
+      "lufthansa.com"
+    ]
+  },
+  "irs": {
+    "known_domains": [
+      "irs.gov"
+    ]
+  },
+  "govuk": {
+    "known_domains": [
+      "gov.uk"
+    ]
+  },
+  "mygov": {
+    "known_domains": [
+      "my.gov.au"
+    ]
+  },
+  "cra": {
+    "known_domains": [
+      "canada.ca"
+    ]
+  },
+  "incometaxindia": {
+    "known_domains": [
+      "incometax.gov.in",
+      "incometaxindiaefiling.gov.in"
+    ]
+  },
+  "belastingdienst": {
+    "known_domains": [
+      "belastingdienst.nl"
+    ]
+  },
+  "financesgouv": {
+    "known_domains": [
+      "impots.gouv.fr"
+    ]
+  },
+  "agenciatributaria": {
+    "known_domains": [
+      "agenciatributaria.es"
+    ]
+  },
+  "idme": {
+    "known_domains": [
+      "id.me"
+    ]
+  },
+  "login_gov": {
+    "known_domains": [
+      "login.gov"
+    ]
+  },
+  "who": {
+    "known_domains": [
+      "who.int"
+    ]
+  },
+  "cdc": {
+    "known_domains": [
+      "cdc.gov"
+    ]
+  },
+  "mcafee": {
+    "known_domains": [
+      "mcafee.com"
+    ]
+  },
+  "norton": {
+    "known_domains": [
+      "norton.com"
+    ]
+  },
+  "kaspersky": {
+    "known_domains": [
+      "kaspersky.com"
+    ]
+  },
+  "avast": {
+    "known_domains": [
+      "avast.com"
+    ]
+  },
+  "dhl_express": {
+    "known_domains": [
+      "dhl.com"
+    ]
+  }
+}

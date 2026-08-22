@@ -37,12 +37,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         scanBtn.disabled = true;
 
         try {
+            // Attempt to get DOM signals from the active tab
+            let domSignals = null;
+            try {
+                const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+                const response = await chrome.tabs.sendMessage(tab.id, { action: "extract_dom_signals" });
+                if (response && response.dom_signals) {
+                    domSignals = response.dom_signals;
+                }
+            } catch (err) {
+                console.warn("Could not get DOM signals from tab (content script might not be loaded on this page):", err);
+            }
+
             const response = await fetch('http://127.0.0.1:5000/api/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ url: currentUrl })
+                body: JSON.stringify({ url: currentUrl, page_signals: domSignals })
             });
 
             if (!response.ok) {

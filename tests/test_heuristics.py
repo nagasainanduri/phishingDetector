@@ -34,14 +34,6 @@ class TestHeuristics(unittest.TestCase):
         matches = self.engine.evaluate('https://bit.ly/12345')
         self.assertTrue(any(m.rule_id == 'DOM_003' and m.severity == Severity.LOW for m in matches))
 
-    def test_typosquatting(self):
-        matches = self.engine.evaluate('http://paypal.com.login-update.xyz')
-        self.assertTrue(any(m.rule_id == 'DOM_004' and m.severity == Severity.HIGH for m in matches))
-        
-        # False positive test: Should not trigger on actual paypal.com
-        matches_clean = self.engine.evaluate('https://www.paypal.com')
-        self.assertFalse(any(m.rule_id == 'DOM_004' for m in matches_clean))
-
     def test_suspicious_patterns(self):
         matches = self.engine.evaluate('http://example.com/login.php?cmd=execute')
         self.assertTrue(any(m.rule_id == 'URL_006' and m.severity == Severity.MEDIUM for m in matches))

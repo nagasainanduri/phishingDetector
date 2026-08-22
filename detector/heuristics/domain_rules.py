@@ -36,34 +36,83 @@ def check_url_shortener(url, parsed):
             )
     return None
 
-def check_typosquatting(url, parsed):
-    common_domains = ['paypal.com', 'apple.com', 'google.com', 'microsoft.com', 'amazon.com']
-    netloc = parsed.netloc.lower()
+def check_brand_impersonation(url, parsed, brand_findings=None):
+    if not brand_findings:
+        return None
+        
+    observed = brand_findings["observed_domain"]
+    expected = brand_findings["expected_domains"]
     
-    for d in common_domains:
-        if d in netloc and netloc != d and not netloc.endswith("." + d):
-            return RuleMatch(
-                rule_id="DOM_004",
-                severity=Severity.HIGH,
-                description="Possible Typosquatting/Homoglyph Indicator.",
-                evidence={"popular_domain_found": d, "actual_domain": netloc}
-            )
-    return None
+    # Check if observed domain is exactly one of the expected, or a subdomain of it
+    if any(observed == d or observed.endswith('.' + d) for d in expected):
+        # Legitimate domain!
+        return None
+        
+    return RuleMatch(
+        rule_id="DOM_004",
+        severity=Severity.CRITICAL,
+        description=f"Brand Impersonation! Highly similar to {brand_findings['possible_brand']} ({brand_findings['similarity_score']:.2f}).",
+        evidence={
+            "expected": expected,
+            "observed": observed,
+            "similarity": brand_findings['similarity_score'],
+            "brand_evidence": brand_findings['evidence']
+        }
+    )
 
+import os
+
+# Load Tranco Top 100k once at module initialization
+TRANCO_TOP_DOMAINS = set()
+TRANCO_FILE = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'tranco_top_100k.txt')
+if os.path.exists(TRANCO_FILE):
+    with open(TRANCO_FILE, 'r', encoding='utf-8') as f:
+        for line in f:
+            domain = line.strip().lower()
+            if domain:
+                TRANCO_TOP_DOMAINS.add(domain)
+
+# Fallback top domains in case file is missing
 TRUSTED_DOMAINS = {
     'github.com', 'google.com', 'microsoft.com', 'apple.com', 'amazon.com',
     'stackoverflow.com', 'linkedin.com', 'twitter.com', 'facebook.com', 'youtube.com'
 }
 
-def check_allowlist(url, parsed):
+def check_top_domain(url, parsed):
     if not parsed.hostname:
         return None
     hostname = parsed.hostname.lower()
+    
+    # Check exact match against Tranco set first (O(1))
+    if hostname in TRANCO_TOP_DOMAINS:
+        return RuleMatch(
+            rule_id="DOM_005",
+            severity=Severity.SAFE,
+            description="Domain is ranked in the Global Top 100,000 (Tranco).",
+            evidence={"hostname": hostname, "source": "Tranco"}
+        )
+        
+    # Check fallback/subdomains against hardcoded trusted domains
     if any(hostname == domain or hostname.endswith('.' + domain) for domain in TRUSTED_DOMAINS):
         return RuleMatch(
             rule_id="DOM_005",
             severity=Severity.SAFE,
             description="Domain matches a highly trusted allowlist.",
-            evidence={"hostname": hostname}
+            evidence={"hostname": hostname, "source": "Fallback Allowlist"}
         )
+        
+    # Check if a subdomain belongs to a Tranco top domain
+    # Example: abc.github.io -> check github.io
+    parts = hostname.split('.')
+    if len(parts) > 2:
+        # Check root domain (e.g., github.io)
+        root_domain = f"{parts[-2]}.{parts[-1]}"
+        if root_domain in TRANCO_TOP_DOMAINS:
+            return RuleMatch(
+                rule_id="DOM_005",
+                severity=Severity.SAFE,
+                description="Root domain is ranked in the Global Top 100,000 (Tranco).",
+                evidence={"root_domain": root_domain, "source": "Tranco"}
+            )
+            
     return None
